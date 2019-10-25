@@ -9,6 +9,10 @@
   "author": "Robert Sidzinka",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "bcryptjs": "^2.4.3",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.7.7",
+    "validator": "^11.1.0"
   }
 }
