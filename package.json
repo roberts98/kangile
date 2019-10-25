@@ -1,0 +1,17 @@
+{
+  "name": "kangile",
+  "version": "1.0.0",
+  "description": "Kanband Board Application with MERN stack",
+  "main": "index.js",
+  "scripts": {
+    "client": "cd client && npm start",
+    "server": "nodemon server/src/index.js",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
+  },
+  "author": "Robert Sidzinka",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^5.0.0",
+    "nodemon": "^1.19.4"
+  }
+}
