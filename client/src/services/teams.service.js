@@ -9,6 +9,15 @@ export async function getUserTeams(token) {
   });
 }
 
+export async function getUserTeam(token, id) {
+  return axios(`/teams/${id}`, {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  });
+}
+
 export async function createTeamRequest(token, name) {
   return axios('/teams', {
     method: 'POST',

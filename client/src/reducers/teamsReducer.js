@@ -2,11 +2,13 @@ import {
   TEAMS_FETCH_FAILURE,
   TEAMS_FETCH_SUCCESS,
   TEAMS_REQUESTED,
-  TEAM_CREATE_SUCCESS
+  TEAM_CREATE_SUCCESS,
+  TEAM_FETCH_SUCCESS
 } from '../contants/teamsStore';
 
 const initialState = {
-  teams: []
+  teams: [],
+  activeTeam: null
 };
 
 function teamsReducer(state = initialState, action) {
@@ -33,6 +35,9 @@ function teamsReducer(state = initialState, action) {
 
     case TEAM_CREATE_SUCCESS:
       return { ...state, teams: [...state.teams, action.payload] };
+
+    case TEAM_FETCH_SUCCESS:
+      return { ...state, activeTeam: action.payload };
 
     default:
       return { ...state };

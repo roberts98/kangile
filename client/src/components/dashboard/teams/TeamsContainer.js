@@ -34,7 +34,7 @@ function TeamsContainer() {
           <H100Row center column>
             <H1 title="You need to create team* before start" />
             <H4 title="* team can have 1 member" />
-            <Link to="/users/teams/create">
+            <Link to="/user/teams/create">
               <Button
                 margin="20px 0 0 0"
                 type="button"

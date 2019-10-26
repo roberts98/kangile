@@ -10,13 +10,15 @@ import LoginPage from '../pages/public/LoginPage';
 import HomePage from '../pages/public/HomePage';
 import Dashboard from '../pages/private/Dashboard';
 import CreateTeam from '../pages/private/CreateTeam';
+import BoardsContainer from '../components/dashboard/boards/BoardsContainer';
 
 function PageRouter() {
   return (
     <Router history={history}>
       <ToastContainer />
       <Switch>
-        <PrivateRoute path="/users/teams/create" component={CreateTeam} />
+        <PrivateRoute path="/user/teams/create" exact component={CreateTeam} />
+        <PrivateRoute path="/user/teams/:id" component={BoardsContainer} />
         <PrivateRoute path="/user" component={Dashboard} />
         <PublicRoute path="/login" component={LoginPage} />
         <PublicRoute path="/" component={HomePage} />

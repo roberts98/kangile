@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import H2 from '../../headers/H2';
+import Link from '../../links/Link';
 
 const StyledDiv = styled.div`
   width: 300px;
@@ -25,14 +26,16 @@ const List = styled.ul`
 
 function Team({ data }) {
   return (
-    <StyledDiv>
-      <StyledH2 color="white" align="center" title={data.name} />
-      <List>
-        {data.members.map(member => (
-          <li key={member._id}>{member.username}</li>
-        ))}
-      </List>
-    </StyledDiv>
+    <Link to={`/user/teams/${data._id}`}>
+      <StyledDiv>
+        <StyledH2 color="white" align="center" title={data.name} />
+        <List>
+          {data.members.map(member => (
+            <li key={member._id}>{member.username}</li>
+          ))}
+        </List>
+      </StyledDiv>
+    </Link>
   );
 }
 

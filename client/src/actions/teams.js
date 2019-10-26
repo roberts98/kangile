@@ -3,9 +3,15 @@ import {
   TEAMS_FETCH_SUCCESS,
   TEAMS_REQUESTED,
   TEAM_CREATE_FAILURE,
-  TEAM_CREATE_SUCCESS
+  TEAM_CREATE_SUCCESS,
+  TEAM_FETCH_FAILURE,
+  TEAM_FETCH_SUCCESS
 } from '../contants/teamsStore';
-import { getUserTeams, createTeamRequest } from '../services/teams.service';
+import {
+  getUserTeams,
+  createTeamRequest,
+  getUserTeam
+} from '../services/teams.service';
 import history from '../routes/history';
 
 export const getTeams = () => {
@@ -26,6 +32,31 @@ export const getTeams = () => {
 
     try {
       const res = await getUserTeams(token);
+      return onSuccess(res.data);
+    } catch (error) {
+      return onError(error.response);
+    }
+  };
+};
+
+export const getTeam = id => {
+  return async (dispatch, getState) => {
+    const { token } = getState().auth.user;
+
+    function onSuccess(data) {
+      dispatch({ type: TEAM_FETCH_SUCCESS, payload: data });
+    }
+
+    function onError(error) {
+      dispatch({ type: TEAM_FETCH_FAILURE, payload: error });
+    }
+
+    dispatch({
+      type: TEAMS_REQUESTED
+    });
+
+    try {
+      const res = await getUserTeam(token, id);
       return onSuccess(res.data);
     } catch (error) {
       return onError(error.response);
