@@ -2,12 +2,12 @@ import React, { Fragment, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import validator from 'validator';
 
-import { register } from '../actions/auth';
-import failureAlert from './alerts/failureAlert';
-import Input from './forms/Input';
-import H1 from './headers/H1';
-import Button from './forms/Button';
-import SmallSpinner from './spinners/SmallSpinner';
+import { register } from '../../actions/auth';
+import failureAlert from '../alerts/failureAlert';
+import Input from '../forms/Input';
+import Button from '../forms/Button';
+import SmallSpinner from '../spinners/SmallSpinner';
+import { CLEAR_ERRORS } from '../../contants/authStore';
 
 function RegisterForm() {
   const [username, setUsername] = useState('');
@@ -62,11 +62,14 @@ function RegisterForm() {
     if (authStore.error) {
       failureAlert(authStore.error);
     }
-  }, [errors, authStore.error]);
+
+    return () => {
+      dispatch({ type: CLEAR_ERRORS });
+    };
+  }, [errors, authStore.error, dispatch]);
 
   return (
     <Fragment>
-      <H1 title="Register!" />
       <form onSubmit={handleFormSubmit}>
         <Input
           onChange={handleUsernameChange}
@@ -89,7 +92,12 @@ function RegisterForm() {
         {authStore.isLoading ? (
           <SmallSpinner />
         ) : (
-          <Button value="Reigster" type="submit" variant="primary" />
+          <Button
+            margin="10px 0 0 0"
+            value="Register"
+            type="submit"
+            variant="inverted"
+          />
         )}
       </form>
     </Fragment>

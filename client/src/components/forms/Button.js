@@ -2,30 +2,34 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledButton = styled.button`
-  @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap');
   min-width: 150px;
   padding: 12px 28px;
+  margin: ${props => (props.margin ? props.margin : 0)}
   border: unset;
   background: ${props =>
     props.variant === 'primary'
       ? '#0099CC'
       : props.variant === 'secondary'
       ? '#fdd835'
-      : '#e0e0e0 '}
+      : props.variant === 'tertiary'
+      ? '#e0e0e0'
+      : 'transparent'}
   color: ${props =>
     props.variant === 'primary'
       ? '#fff'
-      : props.variant === 'secondary'
+      : props.variant === 'secondary' && props.variant === 'tertiary'
       ? '#121212'
-      : '#121212'}
+      : '#fff'}
+  border: ${props => (props.variant === 'inverted' ? '2px solid #fff' : 'none')}
   font-size: 16px;
+  font-weight: 700;
   text-transform: uppercase;
   cursor: pointer;
 `;
 
-function Button({ value, type, variant }) {
+function Button({ value, type, variant, margin }) {
   return (
-    <StyledButton variant={variant} type={type}>
+    <StyledButton margin={margin} variant={variant} type={type}>
       {value}
     </StyledButton>
   );

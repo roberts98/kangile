@@ -10,3 +10,13 @@ export async function userRegister(username, email, password) {
     }
   });
 }
+
+export async function userLogin(email, password) {
+  return axios('/users/login', {
+    method: 'POST',
+    data: {
+      email,
+      password
+    }
+  });
+}
