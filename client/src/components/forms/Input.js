@@ -9,7 +9,7 @@ const StyledInput = styled.input`
   margin-bottom: 10px;
 `;
 
-function Input({ placeholder, type, onChange, value }) {
+function Input({ placeholder, type, onChange, value, className }) {
   function handleChange(e) {
     onChange(e.target.value);
   }
@@ -17,6 +17,7 @@ function Input({ placeholder, type, onChange, value }) {
   return (
     <StyledInput
       onChange={handleChange}
+      className={className}
       value={value}
       type={type}
       placeholder={placeholder}

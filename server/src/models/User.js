@@ -43,6 +43,12 @@ const userSchema = new mongoose.Schema(
   }
 );
 
+userSchema.virtual('teams', {
+  ref: 'Team',
+  localField: '_id',
+  foreignField: 'members'
+});
+
 userSchema.methods.generateAuthToken = async function() {
   const user = this;
   const token = jwt.sign({ _id: user._id.toString() }, 'kangile-pai-2019');

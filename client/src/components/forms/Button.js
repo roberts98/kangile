@@ -5,7 +5,6 @@ const StyledButton = styled.button`
   min-width: 150px;
   padding: 12px 28px;
   margin: ${props => (props.margin ? props.margin : 0)}
-  border: unset;
   background: ${props =>
     props.variant === 'primary'
       ? '#0099CC'
@@ -20,16 +19,37 @@ const StyledButton = styled.button`
       : props.variant === 'secondary' && props.variant === 'tertiary'
       ? '#121212'
       : '#fff'}
-  border: ${props => (props.variant === 'inverted' ? '2px solid #fff' : 'none')}
+  border: ${props =>
+    props.variant === 'inverted' ? '2px solid #fff' : '2px solid transparent'}
   font-size: 16px;
   font-weight: 700;
   text-transform: uppercase;
   cursor: pointer;
+  transition: all .4s;
+
+  &:hover {
+    background: ${props =>
+      props.variant === 'primary'
+        ? '#fff'
+        : props.variant === 'secondary' && props.variant === 'tertiary'
+        ? '#121212'
+        : '#fff'}
+      color: #0099cc
+    border: ${props =>
+      props.variant === 'primary'
+        ? '2px solid #0099cc'
+        : '2px solid transparent'}
+  }
 `;
 
-function Button({ value, type, variant, margin }) {
+function Button({ value, type, variant, margin, className }) {
   return (
-    <StyledButton margin={margin} variant={variant} type={type}>
+    <StyledButton
+      className={className}
+      margin={margin}
+      variant={variant}
+      type={type}
+    >
       {value}
     </StyledButton>
   );
