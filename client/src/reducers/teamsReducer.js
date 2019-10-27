@@ -3,12 +3,15 @@ import {
   TEAMS_FETCH_SUCCESS,
   TEAMS_REQUESTED,
   TEAM_CREATE_SUCCESS,
-  TEAM_FETCH_SUCCESS
+  TEAM_FETCH_SUCCESS,
+  TEAM_BOARDS_ORDER_SUCCESS
 } from '../contants/teamsStore';
 
 const initialState = {
   teams: [],
-  activeTeam: null
+  activeTeam: {
+    boards: []
+  }
 };
 
 function teamsReducer(state = initialState, action) {
@@ -34,10 +37,21 @@ function teamsReducer(state = initialState, action) {
       };
 
     case TEAM_CREATE_SUCCESS:
-      return { ...state, teams: [...state.teams, action.payload] };
+      return {
+        ...state,
+        isLoading: false,
+        teams: [...state.teams, action.payload]
+      };
 
     case TEAM_FETCH_SUCCESS:
-      return { ...state, activeTeam: action.payload };
+      return { ...state, isLoading: false, activeTeam: action.payload };
+
+    case TEAM_BOARDS_ORDER_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        activeTeam: { ...state.activeTeam, boards: action.payload }
+      };
 
     default:
       return { ...state };

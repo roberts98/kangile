@@ -29,3 +29,15 @@ export async function createTeamRequest(token, name) {
     }
   });
 }
+
+export async function updateTeamBoardsOrderRequest(token, id, boards) {
+  return axios(`/teams/${id}/boardsOrder`, {
+    method: 'PATCH',
+    data: {
+      boards
+    },
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  });
+}

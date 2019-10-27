@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 
 import { getTeams } from '../../../actions/teams';
-import { H100Container } from '../../grid/Container';
+import Container, { H100Container } from '../../grid/Container';
 import { H100Row } from '../../grid/Row';
 import H1 from '../../headers/H1';
 import H4 from '../../headers/H4';
@@ -12,8 +12,7 @@ import Link from '../../links/Link';
 import Team from './Team';
 import FullSpinner from '../../spinners/FullSpinner';
 
-const StyledDiv = styled.div`
-  display: flex;
+const StyledDiv = styled(Container)`
   margin-top: 15px;
 `;
 

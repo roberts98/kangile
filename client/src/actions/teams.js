@@ -5,12 +5,15 @@ import {
   TEAM_CREATE_FAILURE,
   TEAM_CREATE_SUCCESS,
   TEAM_FETCH_FAILURE,
-  TEAM_FETCH_SUCCESS
+  TEAM_FETCH_SUCCESS,
+  TEAM_BOARDS_ORDER_SUCCESS,
+  TEAM_BOARDS_ORDER_FAILURE
 } from '../contants/teamsStore';
 import {
   getUserTeams,
   createTeamRequest,
-  getUserTeam
+  getUserTeam,
+  updateTeamBoardsOrderRequest
 } from '../services/teams.service';
 import history from '../routes/history';
 
@@ -83,6 +86,31 @@ export const createTeam = name => {
 
     try {
       const res = await createTeamRequest(token, name);
+      return onSuccess(res.data);
+    } catch (error) {
+      return onError(error.response);
+    }
+  };
+};
+
+export const updateTeamBoardsOrder = (id, boards) => {
+  return async (dispatch, getState) => {
+    const { token } = getState().auth.user;
+
+    function onSuccess(data) {
+      dispatch({ type: TEAM_BOARDS_ORDER_SUCCESS, payload: data });
+    }
+
+    function onError(error) {
+      dispatch({ type: TEAM_BOARDS_ORDER_FAILURE, payload: error });
+    }
+
+    dispatch({
+      type: TEAMS_REQUESTED
+    });
+
+    try {
+      const res = await updateTeamBoardsOrderRequest(token, id, boards);
       return onSuccess(res.data);
     } catch (error) {
       return onError(error.response);
