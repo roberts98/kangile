@@ -1,61 +1,90 @@
 import React from 'react';
+import Link from 'react-router-dom/Link';
 import styled from 'styled-components';
+import { Container, Col, Row } from 'react-bootstrap';
 
-import { H100Container } from '../../components/grid/Container';
-import { H100Row } from '../../components/grid/Row';
-import H1 from '../../components/headers/H1';
-import RegisterForm from '../../components/auth/RegisterForm';
-import Layout from '../../components/Layout';
+import Navbar from '../../components/common/navbar/Navbar';
+import {
+  COLOR_PRIMARY_RGB,
+  COLOR_WHITE,
+  COLOR_PRIMARY
+} from '../../contants/styles';
+import bg from '../../assets/bg.png';
 
-const Left = styled.div`
-  width: 50%;
-  margin-right: 15px;
+const Background = styled.div`
+  background: url(${bg});
+  min-width: 100vw;
+  min-height: 100vh;
 `;
 
-const Right = styled.div`
-  width: 50%;
-  margin-left: 15px;
+const Overlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(${COLOR_PRIMARY_RGB}, 0.4);
 `;
 
-const Heading = styled(H1)`
-  margin-bottom: 25px;
+const Content = styled(Container)`
+  margin-top: 100px;
 `;
 
-const List = styled.ul`
-  font-size: 30px;
-  line-height: 40px;
-  color: #fff;
-  text-align: center;
+const BigText = styled.h1`
+  color: ${COLOR_WHITE};
+  font-size: 100px;
+  font-weight: 700;
+`;
+
+const Text = styled.h3`
+  color: ${COLOR_WHITE};
+  font-size: 48px;
   font-weight: 500;
-  list-style: none;
+`;
+
+const Button = styled(Link)`
+  text-transform: uppercase;
+  font-size: 30px;
+  font-weight: 700;
+  color: ${COLOR_WHITE};
+  border-radius: 10px;
+  display: block;
+  text-align: center;
+  width: 100%;
+  margin-top: 40px;
+  border: 5px solid #fff;
+  text-decoration: none;
+  transition: all 0.4s;
+
+  &:active,
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    background: ${COLOR_WHITE};
+    color: ${COLOR_PRIMARY};
+  }
 `;
 
 function HomePage() {
   return (
-    <Layout blue withNavbar>
-      <H100Container>
-        <H100Row center>
-          <Left>
-            <Heading
-              color="white"
-              title="Task managment was never so easy! Register free account on KANGILE!"
-            />
-            <RegisterForm />
-          </Left>
-          <Right>
-            <Heading align="center" color="white" title="Why KANGILE?" />
-            <List>
-              <li>It's 100% free</li>
-              <li>Custom your boards</li>
-              <li>Work in teams</li>
-              <li>Unlimited team members</li>
-              <li>Built-in chat</li>
-              <li>Real-time notificaitons</li>
-            </List>
-          </Right>
-        </H100Row>
-      </H100Container>
-    </Layout>
+    <Background>
+      <Overlay />
+      <Navbar color={COLOR_WHITE} />
+      <Content>
+        <Row>
+          <Col md="6">
+            <BigText>And everything becomes easier!</BigText>
+          </Col>
+          <Col md="6" style={{ alignSelf: 'center' }}>
+            <Text>
+              Kangile is a place that will allow you to separate and organize
+              all tasks in an easy and accessible way.
+            </Text>
+            <Button to="/login">See More</Button>
+          </Col>
+        </Row>
+      </Content>
+    </Background>
   );
 }
 

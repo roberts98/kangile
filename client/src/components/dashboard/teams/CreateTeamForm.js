@@ -6,6 +6,7 @@ import { createTeam } from '../../../actions/teams';
 import Input from '../../forms/Input';
 import Button from '../../forms/Button';
 import SmallSpinner from '../../spinners/SmallSpinner';
+import FullSpinner from '../../spinners/FullSpinner';
 
 const StyledForm = styled.form`
   text-align: center;
@@ -24,7 +25,7 @@ const StyledButton = styled(Button)`
 
 function CreateTeamForm() {
   const [name, setName] = useState('');
-  const { isLoading } = useSelector(state => state.teams);
+  const isLoading = useSelector(state => state.teams.isLoading);
   const dispatch = useDispatch();
 
   function handleChange(value) {
@@ -37,6 +38,10 @@ function CreateTeamForm() {
     dispatch(createTeam(name));
   }
 
+  if (isLoading) {
+    return <FullSpinner />;
+  }
+
   return (
     <StyledForm onSubmit={handleSubmit}>
       <StyledInput
@@ -44,16 +49,12 @@ function CreateTeamForm() {
         value={name}
         placeholder="Team name"
       />
-      {isLoading ? (
-        <SmallSpinner />
-      ) : (
-        <StyledButton
-          margin="10px 0 0 0"
-          type="submit"
-          value="Create team"
-          variant="primary"
-        />
-      )}
+      <StyledButton
+        margin="10px 0 0 0"
+        type="submit"
+        value="Create team"
+        variant="primary"
+      />
     </StyledForm>
   );
 }

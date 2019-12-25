@@ -72,7 +72,7 @@ export const createTeam = name => {
     const { token } = getState().auth.user;
 
     function onSuccess(data) {
-      dispatch({ type: TEAM_CREATE_SUCCESS, payload: data });
+      dispatch({ type: TEAM_CREATE_SUCCESS, payload: data.team });
       history.push('/user');
     }
 

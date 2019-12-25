@@ -41,6 +41,7 @@ function authReducer(state = initialState, action) {
 
     case REGISTER_FAILURE:
     case LOGIN_FAILURE:
+      console.log('x');
       return {
         ...state,
         error: action.payload,

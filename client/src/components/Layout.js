@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Navbar from './common/Navbar';
+import { COLOR_PRIMARY } from '../contants/styles';
+import Navbar from './common/navbar/NavbarUser';
 import Footer from './common/Footer';
 
 const PageWrapper = styled.div`
@@ -19,7 +20,7 @@ const Main = styled.div`
 function Layout({ children, withNavbar, blue }) {
   return (
     <PageWrapper>
-      {withNavbar && <Navbar />}
+      {withNavbar && <Navbar color={COLOR_PRIMARY} />}
       <Main blue={blue}>{children}</Main>
       <Footer />
     </PageWrapper>

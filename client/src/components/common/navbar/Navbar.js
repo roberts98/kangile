@@ -1,25 +1,26 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
+import { Container } from 'react-bootstrap';
 
-import { logout } from '../../actions/auth';
-import Container from '../grid/Container';
-import H1 from '../headers/H1';
-import Button from '../forms/Button';
-import StyledLink from '../links/Link';
+import { logout } from '../../../actions/auth';
+import H1 from '../../headers/H1';
+import Button from '../../forms/Button';
+import StyledLink from '../../links/Link';
 
 const Wrapper = styled.div`
-  background: #0099cc;
+  position: relative;
+  z-index: 10;
 `;
 
 const Inner = styled.div`
   display: flex;
   justify-content: space-between;
-  height: 46px;
+  height: 92px;
   padding: 25px 0;
 `;
 
-function Navbar() {
+function Navbar({ color }) {
   const isAuthenticated = useSelector(state => state.auth.user.token);
   const dispatch = useDispatch();
 
@@ -34,7 +35,7 @@ function Navbar() {
       <Container>
         <Inner>
           <StyledLink to="/">
-            <H1 color="white" title="KANGILE" />
+            <H1 color={color} title="KANGILE" />
           </StyledLink>
           <StyledLink
             onClick={handleClick}

@@ -6,12 +6,7 @@ const StyledH1 = styled.h1`
   font-weight: 700;
   line-height: 50px;
   margin: 0;
-  color: ${props =>
-    props.color === 'white'
-      ? '#fff'
-      : props.color === 'blue'
-      ? '#0099cc'
-      : '#121212'};
+  color: ${props => props.color};
   text-align: ${props => (props.align ? 'center' : 'left')};
 `;
 

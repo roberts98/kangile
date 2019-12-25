@@ -1,11 +1,9 @@
-import React from 'react';
-import { Provider } from 'react-redux';
+import React, { Fragment, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { createGlobalStyle } from 'styled-components';
 
+import { getTeams } from './actions/teams';
 import Router from './routes/Router';
-import configureStore from './store/createStore';
-
-const store = configureStore();
 
 const GlobalStyles = createGlobalStyle`
   body {
@@ -20,11 +18,17 @@ const GlobalStyles = createGlobalStyle`
 `;
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getTeams());
+  }, [dispatch]);
+
   return (
-    <Provider store={store}>
+    <Fragment>
       <GlobalStyles />
       <Router />
-    </Provider>
+    </Fragment>
   );
 }
 

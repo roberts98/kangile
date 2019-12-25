@@ -1,8 +1,7 @@
-import React, { Fragment, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { Fragment } from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
-import { getTeams } from '../../../actions/teams';
 import Container, { H100Container } from '../../grid/Container';
 import { H100Row } from '../../grid/Row';
 import H1 from '../../headers/H1';
@@ -18,11 +17,6 @@ const StyledDiv = styled(Container)`
 
 function TeamsContainer() {
   const { isLoading, teams } = useSelector(state => state.teams);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getTeams());
-  }, [dispatch]);
 
   return (
     <Fragment>
