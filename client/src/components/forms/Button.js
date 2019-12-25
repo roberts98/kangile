@@ -5,7 +5,7 @@ const StyledButton = styled.button`
   min-width: 150px;
   padding: 12px 28px;
   margin: ${props => (props.margin ? props.margin : 0)}
-  background: ${props =>
+  background-color: ${props =>
     props.variant === 'primary'
       ? '#0099CC'
       : props.variant === 'secondary'
