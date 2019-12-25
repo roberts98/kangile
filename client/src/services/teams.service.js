@@ -18,11 +18,12 @@ export async function getUserTeam(token, id) {
   });
 }
 
-export async function createTeamRequest(token, name) {
+export async function createTeamRequest(token, name, description) {
   return axios('/teams', {
     method: 'POST',
     data: {
-      name
+      name,
+      description
     },
     headers: {
       Authorization: `Bearer ${token}`

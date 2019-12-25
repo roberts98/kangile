@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { Container } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 
 import Team from './Team';
 import FullSpinner from '../../spinners/FullSpinner';
@@ -47,6 +47,10 @@ const H4 = styled.h4`
   text-align: center;
 `;
 
+const TeamsContent = styled(Container)`
+  margin-top: 60px;
+`;
+
 function TeamsContainer() {
   const { isLoading, teams } = useSelector(state => state.teams);
 
@@ -61,11 +65,16 @@ function TeamsContainer() {
           <Button to="/user/teams/create">Create team</Button>
         </Content>
       ) : (
-        <div>
-          {teams.map(team => (
-            <Team key={team._id} data={team} />
-          ))}
-        </div>
+        <TeamsContent>
+          <Row>
+            <Col md="3">Search</Col>
+            <Col md="9">
+              {teams.map(team => (
+                <Team key={team._id} data={team} />
+              ))}
+            </Col>
+          </Row>
+        </TeamsContent>
       )}
     </Fragment>
   );

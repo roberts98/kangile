@@ -67,7 +67,7 @@ export const getTeam = id => {
   };
 };
 
-export const createTeam = name => {
+export const createTeam = (name, description) => {
   return async (dispatch, getState) => {
     const { token } = getState().auth.user;
 
@@ -85,7 +85,7 @@ export const createTeam = name => {
     });
 
     try {
-      const res = await createTeamRequest(token, name);
+      const res = await createTeamRequest(token, name, description);
       return onSuccess(res.data);
     } catch (error) {
       return onError(error.response);
