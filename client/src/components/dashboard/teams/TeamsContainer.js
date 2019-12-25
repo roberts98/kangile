@@ -8,18 +8,16 @@ import Team from './Team';
 import FullSpinner from '../../spinners/FullSpinner';
 import { COLOR_PRIMARY, COLOR_WHITE } from '../../../contants/styles';
 
-const Button = styled(Link)`
+export const Button = styled(Link)`
   display: block;
-  width: 60%;
-  margin: 70px auto;
   background-color: ${COLOR_PRIMARY};
   color: ${COLOR_WHITE};
-  font-size: 24px;
+  font-size: ${props => (props.big ? '24px' : '12px')};
   font-weight: 700;
   text-align: center;
-  padding: 10px 0;
+  padding: 5px 0;
   border-radius: 10px;
-  border: 5px solid transparent;
+  border: 2px solid transparent;
   text-transform: uppercase;
 
   &:hover,
@@ -28,8 +26,13 @@ const Button = styled(Link)`
     text-decoration: none;
     background: transparent;
     color: ${COLOR_PRIMARY};
-    border: 5px solid ${COLOR_PRIMARY};
+    border: 2px solid ${COLOR_PRIMARY};
   }
+`;
+
+const ButtonWrapper = styled.div`
+  width: 60%;
+  margin: 70px auto;
 `;
 
 const Content = styled(Container)`
@@ -62,16 +65,22 @@ function TeamsContainer() {
         <Content>
           <H2>You need to create team* before start</H2>
           <H4>*team can have 1 member</H4>
-          <Button to="/user/teams/create">Create team</Button>
+          <ButtonWrapper>
+            <Button big to="/user/teams/create">
+              Create team
+            </Button>
+          </ButtonWrapper>
         </Content>
       ) : (
         <TeamsContent>
           <Row>
             <Col md="3">Search</Col>
             <Col md="9">
-              {teams.map(team => (
-                <Team key={team._id} data={team} />
-              ))}
+              <Row>
+                {teams.map(team => (
+                  <Team key={team._id} data={team} />
+                ))}
+              </Row>
             </Col>
           </Row>
         </TeamsContent>
