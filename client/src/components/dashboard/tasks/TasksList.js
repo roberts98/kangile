@@ -1,7 +1,9 @@
 import React from 'react';
 
-function TasksList() {
-  return <div>Tasks TasksList</div>;
+import Task from './Task';
+
+function TasksList({ tasks }) {
+  return tasks.map(task => <Task key={task._id} task={task} />);
 }
 
 export default TasksList;

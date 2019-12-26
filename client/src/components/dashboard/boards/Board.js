@@ -36,6 +36,7 @@ const StyledLink = styled.p`
   cursor: pointer;
   display: flex;
   align-items: center;
+  margin-top: 15px;
 
   &::before {
     content: '';
