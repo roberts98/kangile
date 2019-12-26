@@ -3,11 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { DndProvider } from 'react-dnd';
 import HTML5Backed from 'react-dnd-html5-backend';
 import update from 'immutability-helper';
+import { Container, Row, Col } from 'react-bootstrap';
 
 import { getTeam, updateTeamBoardsOrder } from '../../../actions/teams';
 import Layout from '../../Layout';
-import { H100Container } from '../../grid/Container';
-import { H100Row } from '../../grid/Row';
 import Board from './Board';
 
 function BoardsContainer({ match }) {
@@ -37,21 +36,26 @@ function BoardsContainer({ match }) {
 
   return (
     <Layout withNavbar>
-      <H100Container>
-        <H100Row>
-          <DndProvider backend={HTML5Backed}>
-            {stateBoards.map((board, index) => (
-              <Board
-                key={board._id}
-                index={index}
-                id={board._id}
-                moveCard={moveCard}
-                name={board.name}
-              />
-            ))}
-          </DndProvider>
-        </H100Row>
-      </H100Container>
+      <Container>
+        <Row>
+          <Col md="3">Summary</Col>
+          <Col md="9">
+            <Row>
+              <DndProvider backend={HTML5Backed}>
+                {stateBoards.map((board, index) => (
+                  <Board
+                    key={board._id}
+                    index={index}
+                    id={board._id}
+                    moveCard={moveCard}
+                    board={board}
+                  />
+                ))}
+              </DndProvider>
+            </Row>
+          </Col>
+        </Row>
+      </Container>
     </Layout>
   );
 }

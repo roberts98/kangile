@@ -7,7 +7,27 @@ const boardSchema = new mongoose.Schema(
       required: true,
       trim: true,
       minlength: 4
-    }
+    },
+    tasks: [
+      {
+        name: {
+          type: String,
+          required: true
+        },
+        description: {
+          type: String,
+          required: true
+        },
+        author: {
+          type: String,
+          required: true
+        },
+        asignee: {
+          type: String,
+          required: true
+        }
+      }
+    ]
   },
   {
     timestamps: true

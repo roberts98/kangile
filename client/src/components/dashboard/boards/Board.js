@@ -1,18 +1,57 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { useDrag, useDrop } from 'react-dnd';
 import styled from 'styled-components';
+import { Col } from 'react-bootstrap';
+
+import Modal from '../../modals/Modal';
+import {
+  COLOR_DARK,
+  COLOR_LIGHT,
+  COLOR_PRIMARY
+} from '../../../contants/styles';
+import plus from '../../../assets/blue_plus.svg';
+import NewTaskForm from '../tasks/NewTaskForm';
+import TasksList from '../tasks/TasksList';
 
 const StyledDiv = styled.div`
-  width: 300px;
-  height: 40px;
-  background-color: #0099cc;
-  margin-top: 20px;
-  margin-right: 20px;
+  background-color: ${COLOR_LIGHT};
   opacity: ${props => (props.isDragging ? 0 : 1)};
   cursor: move;
+  border-radius: 15px;
+  padding: 20px;
 `;
 
-function Board({ name, index, moveCard, id }) {
+const Name = styled.h2`
+  font-size: 36px;
+  font-weight: 700;
+  color: ${COLOR_DARK};
+  margin-bottom: 30px;
+  text-align: center;
+`;
+
+const StyledLink = styled.p`
+  font-size: 24px;
+  color: ${COLOR_PRIMARY};
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+
+  &::before {
+    content: '';
+    background-image: url(${plus});
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    position: relative;
+    left: -5px;
+  }
+`;
+
+function Board({ board, index, moveCard, id }) {
+  const [isAddingNewTask, setIsAddingNewTask] = useState(false);
   const ref = useRef(null);
   const [, drop] = useDrop({
     accept: 'BOARD',
@@ -41,6 +80,10 @@ function Board({ name, index, moveCard, id }) {
     }
   });
 
+  function openModal() {
+    setIsAddingNewTask(true);
+  }
+
   const [{ isDragging }, drag] = useDrag({
     item: { type: 'BOARD', id, index },
     collect: monitor => ({
@@ -51,9 +94,16 @@ function Board({ name, index, moveCard, id }) {
   drag(drop(ref));
 
   return (
-    <StyledDiv isDragging={isDragging} ref={ref} className="box">
-      {name}
-    </StyledDiv>
+    <Col md="4">
+      <StyledDiv isDragging={isDragging} ref={ref} className="box">
+        <Name>{board.name}</Name>
+        <TasksList tasks={board.tasks} />
+        <StyledLink onClick={openModal}>Add task</StyledLink>
+        <Modal isOpen={isAddingNewTask}>
+          <NewTaskForm boardId={id} />
+        </Modal>
+      </StyledDiv>
+    </Col>
   );
 }
 

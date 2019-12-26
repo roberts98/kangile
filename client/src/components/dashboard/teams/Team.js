@@ -5,7 +5,7 @@ import { Col } from 'react-bootstrap';
 import H2 from '../../headers/H2';
 import Link from '../../links/Link';
 import {
-  COLOR_GRAY,
+  COLOR_LIGHT,
   COLOR_DARK,
   COLOR_PRIMARY,
   COLOR_BLACK,
@@ -16,7 +16,7 @@ import avatar from '../../../assets/avatar.png';
 
 const Content = styled.div`
   min-height: 400px;
-  background: ${COLOR_GRAY};
+  background: ${COLOR_LIGHT};
   margin-right: 15px;
   border-radius: 15px;
   padding: 20px;
