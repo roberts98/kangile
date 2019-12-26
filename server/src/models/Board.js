@@ -8,6 +8,10 @@ const boardSchema = new mongoose.Schema(
       trim: true,
       minlength: 4
     },
+    order: {
+      type: Number,
+      required: true
+    },
     tasks: [
       {
         name: {

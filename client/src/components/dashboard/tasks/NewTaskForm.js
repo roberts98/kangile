@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import { createTask } from '../../../actions/boards';
 
-function NewTaskForm({ boardId }) {
+function NewTaskForm({ boardId, handleModalClose }) {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [attachments, setAttachments] = useState([]);
@@ -23,6 +23,7 @@ function NewTaskForm({ boardId }) {
     };
 
     dispatch(createTask(boardId, data));
+    handleModalClose();
   }
 
   return (

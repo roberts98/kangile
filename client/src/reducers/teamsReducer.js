@@ -4,7 +4,10 @@ import {
   TEAMS_REQUESTED,
   TEAM_CREATE_SUCCESS,
   TEAM_FETCH_SUCCESS,
-  TEAM_BOARDS_ORDER_SUCCESS
+  TEAM_BOARDS_ORDER_SUCCESS,
+  TASK_CREATE_FAILURE,
+  TASK_CREATE_SUCCESS,
+  TASK_REQUESTED
 } from '../contants/teamsStore';
 
 const initialState = {
@@ -51,6 +54,29 @@ function teamsReducer(state = initialState, action) {
         ...state,
         isLoading: false,
         activeTeam: { ...state.activeTeam, boards: action.payload }
+      };
+
+    case TASK_REQUESTED:
+      return {
+        ...state,
+        loadingId: action.payload
+      };
+
+    case TASK_CREATE_SUCCESS:
+      const modifiedBoard = state.activeTeam.boards.filter(
+        board => board._id === action.payload.board._id
+      )[0];
+      const index = state.activeTeam.boards.indexOf(modifiedBoard);
+
+      return {
+        ...state,
+        loadingId: null,
+        activeTeam: {
+          ...state.activeTeam,
+          boards: state.activeTeam.boards.map((board, i) =>
+            i === index ? action.payload.board : board
+          )
+        }
       };
 
     default:
