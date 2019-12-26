@@ -7,9 +7,9 @@ const Board = require('../models/Board');
 const router = new express.Router();
 
 router.post('/', auth, async (req, res) => {
-  const todoBoard = new Board({ name: 'todo' });
-  const inProgressBoard = new Board({ name: 'in progress' });
-  const doneBoard = new Board({ name: 'done' });
+  const todoBoard = new Board({ name: 'todo', order: 1 });
+  const inProgressBoard = new Board({ name: 'in progress', order: 2 });
+  const doneBoard = new Board({ name: 'done', order: 3 });
   const team = new Team({
     ...req.body,
     members: [req.user._id],

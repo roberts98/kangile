@@ -1,6 +1,6 @@
 import { createTaskRequest } from '../services/boards.service';
 import {
-  TEAMS_REQUESTED,
+  TASK_REQUESTED,
   TASK_CREATE_SUCCESS,
   TASK_CREATE_FAILURE
 } from '../contants/teamsStore';
@@ -18,7 +18,8 @@ export const createTask = (boardId, data) => {
     }
 
     dispatch({
-      type: TEAMS_REQUESTED
+      type: TASK_REQUESTED,
+      payload: boardId
     });
 
     try {

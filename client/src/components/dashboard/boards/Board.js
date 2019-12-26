@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useDrag, useDrop } from 'react-dnd';
 import styled from 'styled-components';
 import { Col } from 'react-bootstrap';
@@ -12,6 +13,8 @@ import {
 import plus from '../../../assets/blue_plus.svg';
 import NewTaskForm from '../tasks/NewTaskForm';
 import TasksList from '../tasks/TasksList';
+import FullSpinner from '../../spinners/FullSpinner';
+import SmallSpinner from '../../spinners/SmallSpinner';
 
 const StyledDiv = styled.div`
   background-color: ${COLOR_LIGHT};
@@ -53,6 +56,8 @@ const StyledLink = styled.p`
 
 function Board({ board, index, moveCard, id }) {
   const [isAddingNewTask, setIsAddingNewTask] = useState(false);
+  const loadingId = useSelector(state => state.teams.loadingId);
+
   const ref = useRef(null);
   const [, drop] = useDrop({
     accept: 'BOARD',
@@ -85,6 +90,10 @@ function Board({ board, index, moveCard, id }) {
     setIsAddingNewTask(true);
   }
 
+  function handleModalClose() {
+    setIsAddingNewTask(false);
+  }
+
   const [{ isDragging }, drag] = useDrag({
     item: { type: 'BOARD', id, index },
     collect: monitor => ({
@@ -98,10 +107,14 @@ function Board({ board, index, moveCard, id }) {
     <Col md="4">
       <StyledDiv isDragging={isDragging} ref={ref} className="box">
         <Name>{board.name}</Name>
-        <TasksList tasks={board.tasks} />
+        {loadingId === id ? (
+          <SmallSpinner />
+        ) : (
+          <TasksList tasks={board.tasks} />
+        )}
         <StyledLink onClick={openModal}>Add task</StyledLink>
         <Modal isOpen={isAddingNewTask}>
-          <NewTaskForm boardId={id} />
+          <NewTaskForm handleModalClose={handleModalClose} boardId={id} />
         </Modal>
       </StyledDiv>
     </Col>
