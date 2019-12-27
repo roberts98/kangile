@@ -77,7 +77,9 @@ function Team({ data }) {
             </li>
           ))}
         </List>
-        <Button to={`/user/teams/${data._id}`}>See tasks</Button>
+        <Link to={`/user/teams/${data._id}`}>
+          <Button>See tasks</Button>
+        </Link>
       </Content>
     </Col>
   );

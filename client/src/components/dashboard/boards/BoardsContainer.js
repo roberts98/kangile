@@ -8,10 +8,12 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { getTeam, updateTeamBoardsOrder } from '../../../actions/teams';
 import Layout from '../../Layout';
 import Board from './Board';
+import FullSpinner from '../../spinners/FullSpinner';
 
 function BoardsContainer({ match }) {
   const dispatch = useDispatch();
   const boards = useSelector(state => state.teams.activeTeam.boards);
+  const isLoading = useSelector(state => state.teams.isLoading);
   const [stateBoards, setStateBoards] = useState(boards);
 
   const moveCard = useCallback(
@@ -34,7 +36,9 @@ function BoardsContainer({ match }) {
     dispatch(getTeam(match.params.id));
   }, [dispatch, match.params.id]);
 
-  console.log(boards);
+  if (isLoading) {
+    return <FullSpinner />;
+  }
 
   return (
     <Layout withNavbar>

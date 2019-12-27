@@ -12,7 +12,7 @@ import {
 
 export const createTask = (boardId, data) => {
   return async (dispatch, getState) => {
-    const { token } = getState().auth.user;
+    const { token } = getState().auth;
 
     function onSuccess(data) {
       dispatch({ type: TASK_CREATE_SUCCESS, payload: data });
@@ -38,7 +38,7 @@ export const createTask = (boardId, data) => {
 
 export const deleteTask = (boardId, taskId) => {
   return async (dispatch, getState) => {
-    const { token } = getState().auth.user;
+    const { token } = getState().auth;
 
     function onSuccess(data) {
       dispatch({ type: TASK_DELETE_SUCCESS, payload: data });

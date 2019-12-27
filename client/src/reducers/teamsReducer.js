@@ -68,7 +68,7 @@ function teamsReducer(state = initialState, action) {
     case TASK_CREATE_SUCCESS:
       state.activeTeam.boards.map((board, i) => {
         if (board._id === action.payload.board._id) {
-          index = i;
+          return (index = i);
         }
       });
 
@@ -86,7 +86,7 @@ function teamsReducer(state = initialState, action) {
     case TASK_DELETE_SUCCESS: {
       state.activeTeam.boards.map((board, i) => {
         if (board._id === action.payload.board._id) {
-          index = i;
+          return (index = i);
         }
       });
 

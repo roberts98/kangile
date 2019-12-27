@@ -15,8 +15,8 @@ const Wrapper = styled.div`
   font-weight: 500;
 `;
 
-function UserIcon({ char }) {
-  return <Wrapper>{char}</Wrapper>;
+function UserIcon({ char, handleClick }) {
+  return <Wrapper onClick={handleClick}>{char}</Wrapper>;
 }
 
 export default UserIcon;

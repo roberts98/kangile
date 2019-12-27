@@ -11,16 +11,16 @@ import {
 import history from '../routes/history';
 import { userRegister, userLogin } from '../services/user.service';
 
-function storeJWT(token) {
-  window.localStorage.setItem('token', token);
+function storeUserData(userData) {
+  window.localStorage.setItem('userData', JSON.stringify(userData));
 }
 
-export function getJWT() {
-  return window.localStorage.getItem('token');
+export function getUserData() {
+  return JSON.parse(window.localStorage.getItem('userData'));
 }
 
-function removeJWT() {
-  window.localStorage.removeItem('token');
+function removeUserData() {
+  window.localStorage.removeItem('userData');
 }
 
 export const clearErrors = () => {
@@ -34,7 +34,7 @@ export const register = (username, email, password) => {
     function onSuccess(user) {
       dispatch({ type: REGISTER_SUCCESS, payload: user.data });
       history.push('/user');
-      storeJWT(user.data.token);
+      storeUserData(user.data);
     }
 
     function onError(error) {
@@ -59,7 +59,7 @@ export const login = (email, password) => {
     function onSuccess(user) {
       dispatch({ type: LOGIN_SUCCESS, payload: user.data });
       history.push('/user');
-      storeJWT(user.data.token);
+      storeUserData(user.data);
     }
 
     function onError(error) {
@@ -81,7 +81,7 @@ export const login = (email, password) => {
 
 export const logout = () => {
   return dispatch => {
-    removeJWT();
+    removeUserData();
     dispatch({ type: LOGOUT });
   };
 };

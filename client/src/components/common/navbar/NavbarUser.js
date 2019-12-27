@@ -1,8 +1,10 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Container } from 'react-bootstrap';
 
+import { logout } from '../../../actions/auth';
 import H1 from '../../headers/H1';
 import StyledLink from '../../links/Link';
 import { COLOR_PRIMARY } from '../../../contants/styles';
@@ -34,6 +36,15 @@ const Icon = styled(Link)`
 `;
 
 function NavbarUser() {
+  const isAuthenticated = useSelector(state => state.auth.token);
+  const dispatch = useDispatch();
+
+  function handleClick() {
+    if (isAuthenticated) {
+      dispatch(logout());
+    }
+  }
+
   return (
     <Container>
       <Inner>
@@ -43,7 +54,7 @@ function NavbarUser() {
         <Right>
           <Icon to="/#" bg={plus} />
           <Icon to="/#" bg={home} />
-          <UserIcon char="R" />
+          <UserIcon handleClick={handleClick} char="R" />
         </Right>
       </Inner>
     </Container>

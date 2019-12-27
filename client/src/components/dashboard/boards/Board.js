@@ -85,7 +85,7 @@ function Board({ board, index, moveCard, id }) {
     }
   });
 
-  function openModal() {
+  function handleClick() {
     setIsAddingNewTask(true);
   }
 
@@ -111,8 +111,8 @@ function Board({ board, index, moveCard, id }) {
         ) : (
           <TasksList boardId={id} tasks={board.tasks} />
         )}
-        <StyledLink onClick={openModal}>Add task</StyledLink>
-        <Modal isOpen={isAddingNewTask}>
+        <StyledLink onClick={handleClick}>Add task</StyledLink>
+        <Modal handleClose={handleModalClose} isOpen={isAddingNewTask}>
           <NewTaskForm handleModalClose={handleModalClose} boardId={id} />
         </Modal>
       </StyledDiv>

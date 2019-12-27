@@ -8,14 +8,14 @@ import Team from './Team';
 import FullSpinner from '../../spinners/FullSpinner';
 import { COLOR_PRIMARY, COLOR_WHITE } from '../../../contants/styles';
 
-export const Button = styled(Link)`
+export const Button = styled.button`
   display: block;
   background-color: ${COLOR_PRIMARY};
   color: ${COLOR_WHITE};
   font-size: ${props => (props.big ? '24px' : '12px')};
   font-weight: 700;
   text-align: center;
-  padding: 5px 0;
+  padding: 5px 10px;
   border-radius: 10px;
   border: 2px solid transparent;
   text-transform: uppercase;
@@ -27,6 +27,14 @@ export const Button = styled(Link)`
     background: transparent;
     color: ${COLOR_PRIMARY};
     border: 2px solid ${COLOR_PRIMARY};
+
+    a {
+      color: ${COLOR_PRIMARY};
+    }
+  }
+
+  a {
+    color: ${COLOR_WHITE};
   }
 `;
 
@@ -56,6 +64,7 @@ const TeamsContent = styled(Container)`
 
 function TeamsContainer() {
   const { isLoading, teams } = useSelector(state => state.teams);
+  console.log(useSelector(state => state));
 
   return (
     <Fragment>
@@ -66,9 +75,7 @@ function TeamsContainer() {
           <H2>You need to create team* before start</H2>
           <H4>*team can have 1 member</H4>
           <ButtonWrapper>
-            <Button big to="/user/teams/create">
-              Create team
-            </Button>
+            <Button big>Create team</Button>
           </ButtonWrapper>
         </Content>
       ) : (

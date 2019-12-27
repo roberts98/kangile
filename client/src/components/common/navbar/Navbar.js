@@ -21,7 +21,7 @@ const Inner = styled.div`
 `;
 
 function Navbar({ color }) {
-  const isAuthenticated = useSelector(state => state.auth.user.token);
+  const isAuthenticated = useSelector(state => state.auth.token);
   const dispatch = useDispatch();
 
   function handleClick() {
