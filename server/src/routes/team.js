@@ -75,11 +75,21 @@ router.patch('/:id/updateTasks', auth, async (req, res) => {
       .populate('boards')
       .exec();
 
-    team.boards = req.body.boards;
+    team.boards.map((board, i) => {
+      (async function() {
+        const MBoard = await Board.findById(board._id);
+        const tasks = req.body.boards.filter(
+          FBoard => FBoard._id === board._id.toString()
+        )[0].tasks;
+        MBoard.tasks = tasks;
+
+        await MBoard.save();
+      })();
+    });
 
     await team.save();
 
-    res.send({ boards: team.boards });
+    res.send({ boards: req.body.boards });
   } catch (error) {
     console.log(error);
     res.status(404).send();

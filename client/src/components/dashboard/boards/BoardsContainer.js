@@ -9,13 +9,14 @@ import Layout from '../../Layout';
 import Board from './Board';
 import FullSpinner from '../../spinners/FullSpinner';
 import TeamSummarySidebar from '../teams/TeamSummarySidebar';
+import SmallSpinner from '../../spinners/SmallSpinner';
 
 function BoardsContainer({ match }) {
   const dispatch = useDispatch();
   const team = useSelector(state => state.teams.activeTeam);
-  const isLoading = useSelector(state => state.teams.isLoading);
+  const { isLoading, isBoardLoading } = useSelector(state => state.teams);
   const [stateBoards, setStateBoards] = useState(team.boards);
-  console.log(useSelector(state => state));
+  console.log(isBoardLoading);
 
   useEffect(() => {
     setStateBoards(team.boards);
@@ -99,16 +100,20 @@ function BoardsContainer({ match }) {
           </Col>
           <Col md="9">
             <Row>
-              <DragDropContext onDragEnd={handleDragEnd}>
-                {stateBoards.map((board, index) => (
-                  <Board
-                    key={board._id}
-                    index={index}
-                    id={board._id}
-                    board={board}
-                  />
-                ))}
-              </DragDropContext>
+              {isBoardLoading ? (
+                <SmallSpinner />
+              ) : (
+                <DragDropContext onDragEnd={handleDragEnd}>
+                  {stateBoards.map((board, index) => (
+                    <Board
+                      key={board._id}
+                      index={index}
+                      id={board._id}
+                      board={board}
+                    />
+                  ))}
+                </DragDropContext>
+              )}
             </Row>
           </Col>
         </Row>

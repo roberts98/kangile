@@ -9,7 +9,8 @@ import {
   TASK_CREATE_SUCCESS,
   TASK_REQUESTED,
   TASK_DELETE_SUCCESS,
-  TASK_BOARD_SUCCESS
+  TASK_BOARD_SUCCESS,
+  TASK_BOARD_REQUESTED
 } from '../contants/teamsStore';
 
 const initialState = {
@@ -103,9 +104,16 @@ function teamsReducer(state = initialState, action) {
         }
       };
 
+    case TASK_BOARD_REQUESTED:
+      return {
+        ...state,
+        isBoardLoading: true
+      };
+
     case TASK_BOARD_SUCCESS:
       return {
         ...state,
+        isBoardLoading: false,
         activeTeam: {
           ...state.activeTeam,
           boards: action.payload.boards

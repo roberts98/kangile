@@ -10,7 +10,8 @@ import {
   TASK_DELETE_FAILURE,
   TASK_DELETE_SUCCESS,
   TASK_BOARD_SUCCESS,
-  TASK_BOARD_FAILURE
+  TASK_BOARD_FAILURE,
+  TASK_BOARD_REQUESTED
 } from '../contants/teamsStore';
 
 export const createTask = (boardId, data) => {
@@ -78,7 +79,7 @@ export const updateTasksBoard = (id, boards) => {
     }
 
     dispatch({
-      type: TASK_REQUESTED
+      type: TASK_BOARD_REQUESTED
     });
 
     try {
