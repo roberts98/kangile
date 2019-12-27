@@ -1,7 +1,6 @@
 import React from 'react';
 
 function TeamSummarySidebar({ team }) {
-  console.log(team);
   return (
     <div>
       <h1>{team.name}</h1>

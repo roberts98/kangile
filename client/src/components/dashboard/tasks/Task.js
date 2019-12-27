@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
+import { Draggable } from 'react-beautiful-dnd';
 
 import { deleteTask } from '../../../actions/boards';
 import { COLOR_WHITE } from '../../../contants/styles';
@@ -29,7 +30,7 @@ const Name = styled.h3`
   font-size: 18px;
 `;
 
-function Task({ task, boardId }) {
+function Task({ task, boardId, index }) {
   const dispatch = useDispatch();
 
   function handleRemoveClick() {
@@ -37,10 +38,18 @@ function Task({ task, boardId }) {
   }
 
   return (
-    <Wrapper>
-      <Name>{task.name}</Name>
-      <RemoveIcon onClick={handleRemoveClick} />
-    </Wrapper>
+    <Draggable draggableId={task._id} index={index}>
+      {provided => (
+        <Wrapper
+          {...provided.dragHandleProps}
+          {...provided.draggableProps}
+          ref={provided.innerRef}
+        >
+          <Name>{task.name}</Name>
+          <RemoveIcon onClick={handleRemoveClick} />
+        </Wrapper>
+      )}
+    </Draggable>
   );
 }
 

@@ -21,3 +21,14 @@ export async function deleteTaskRequest(token, boardId, taskId) {
     }
   });
 }
+export async function updateTasksBoardRequest(token, teamId, boards) {
+  return axios(`/teams/${teamId}/updateTasks`, {
+    method: 'PATCH',
+    headers: {
+      Authorization: `Bearer ${token}`
+    },
+    data: {
+      boards
+    }
+  });
+}

@@ -1,8 +1,8 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useDrag, useDrop } from 'react-dnd';
 import styled from 'styled-components';
 import { Col } from 'react-bootstrap';
+import { Droppable } from 'react-beautiful-dnd';
 
 import Modal from '../../modals/Modal';
 import {
@@ -12,8 +12,8 @@ import {
 } from '../../../contants/styles';
 import plus from '../../../assets/blue_plus.svg';
 import NewTaskForm from '../tasks/NewTaskForm';
-import TasksList from '../tasks/TasksList';
 import SmallSpinner from '../../spinners/SmallSpinner';
+import Task from '../tasks/Task';
 
 const StyledDiv = styled.div`
   background-color: ${COLOR_LIGHT};
@@ -53,37 +53,11 @@ const StyledLink = styled.p`
   }
 `;
 
-function Board({ board, index, moveCard, id }) {
+const TaskList = styled.div``;
+
+function Board({ board, index, id }) {
   const [isAddingNewTask, setIsAddingNewTask] = useState(false);
   const loadingId = useSelector(state => state.teams.loadingId);
-
-  const ref = useRef(null);
-  const [, drop] = useDrop({
-    accept: 'BOARD',
-    hover(item, monitor) {
-      if (!ref.current) {
-        return;
-      }
-      const dragIndex = item.index;
-      const hoverIndex = index;
-      if (dragIndex === hoverIndex) {
-        return;
-      }
-      const hoverBoundingRect = ref.current.getBoundingClientRect();
-      const hoverMiddleY =
-        (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
-      const clientOffset = monitor.getClientOffset();
-      const hoverClientY = clientOffset.y - hoverBoundingRect.top;
-      if (dragIndex < hoverIndex && hoverClientY < hoverMiddleY) {
-        return;
-      }
-      if (dragIndex > hoverIndex && hoverClientY > hoverMiddleY) {
-        return;
-      }
-      moveCard(dragIndex, hoverIndex);
-      item.index = hoverIndex;
-    }
-  });
 
   function handleClick() {
     setIsAddingNewTask(true);
@@ -93,23 +67,23 @@ function Board({ board, index, moveCard, id }) {
     setIsAddingNewTask(false);
   }
 
-  const [{ isDragging }, drag] = useDrag({
-    item: { type: 'BOARD', id, index },
-    collect: monitor => ({
-      isDragging: monitor.isDragging()
-    })
-  });
-
-  drag(drop(ref));
-
   return (
     <Col md="4">
-      <StyledDiv isDragging={isDragging} ref={ref} className="box">
+      <StyledDiv className="box">
         <Name>{board.name}</Name>
         {loadingId === id ? (
           <SmallSpinner />
         ) : (
-          <TasksList boardId={id} tasks={board.tasks} />
+          <Droppable droppableId={id}>
+            {provided => (
+              <TaskList ref={provided.innerRef} {...provided.droppableProps}>
+                {board.tasks.map((task, i) => (
+                  <Task boardId={id} key={task._id} index={i} task={task} />
+                ))}
+                {provided.placeholder}
+              </TaskList>
+            )}
+          </Droppable>
         )}
         <StyledLink onClick={handleClick}>Add task</StyledLink>
         <Modal handleClose={handleModalClose} isOpen={isAddingNewTask}>

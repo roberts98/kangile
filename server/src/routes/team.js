@@ -69,4 +69,21 @@ router.patch('/:id/boardsOrder', auth, async (req, res) => {
   }
 });
 
+router.patch('/:id/updateTasks', auth, async (req, res) => {
+  try {
+    const team = await Team.findById(req.params.id)
+      .populate('boards')
+      .exec();
+
+    team.boards = req.body.boards;
+
+    await team.save();
+
+    res.send({ boards: team.boards });
+  } catch (error) {
+    console.log(error);
+    res.status(404).send();
+  }
+});
+
 module.exports = router;

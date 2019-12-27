@@ -1,13 +1,16 @@
 import {
   createTaskRequest,
-  deleteTaskRequest
+  deleteTaskRequest,
+  updateTasksBoardRequest
 } from '../services/boards.service';
 import {
   TASK_REQUESTED,
   TASK_CREATE_SUCCESS,
   TASK_CREATE_FAILURE,
   TASK_DELETE_FAILURE,
-  TASK_DELETE_SUCCESS
+  TASK_DELETE_SUCCESS,
+  TASK_BOARD_SUCCESS,
+  TASK_BOARD_FAILURE
 } from '../contants/teamsStore';
 
 export const createTask = (boardId, data) => {
@@ -55,6 +58,31 @@ export const deleteTask = (boardId, taskId) => {
 
     try {
       const res = await deleteTaskRequest(token, boardId, taskId);
+      return onSuccess(res.data);
+    } catch (error) {
+      return onError(error.response);
+    }
+  };
+};
+
+export const updateTasksBoard = (id, boards) => {
+  return async (dispatch, getState) => {
+    const { token } = getState().auth;
+
+    function onSuccess(data) {
+      dispatch({ type: TASK_BOARD_SUCCESS, payload: data });
+    }
+
+    function onError(error) {
+      dispatch({ type: TASK_BOARD_FAILURE, payload: error });
+    }
+
+    dispatch({
+      type: TASK_REQUESTED
+    });
+
+    try {
+      const res = await updateTasksBoardRequest(token, id, boards);
       return onSuccess(res.data);
     } catch (error) {
       return onError(error.response);
