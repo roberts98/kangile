@@ -13,7 +13,6 @@ import {
 import plus from '../../../assets/blue_plus.svg';
 import NewTaskForm from '../tasks/NewTaskForm';
 import TasksList from '../tasks/TasksList';
-import FullSpinner from '../../spinners/FullSpinner';
 import SmallSpinner from '../../spinners/SmallSpinner';
 
 const StyledDiv = styled.div`
