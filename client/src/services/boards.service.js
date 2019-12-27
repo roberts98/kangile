@@ -9,3 +9,15 @@ export async function createTaskRequest(token, boardId, data) {
     data
   });
 }
+
+export async function deleteTaskRequest(token, boardId, taskId) {
+  return axios(`/boards/${boardId}/${taskId}`, {
+    method: 'DELETE',
+    headers: {
+      Authorization: `Bearer ${token}`
+    },
+    data: {
+      taskId
+    }
+  });
+}

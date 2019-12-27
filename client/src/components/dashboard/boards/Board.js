@@ -109,7 +109,7 @@ function Board({ board, index, moveCard, id }) {
         {loadingId === id ? (
           <SmallSpinner />
         ) : (
-          <TasksList tasks={board.tasks} />
+          <TasksList boardId={id} tasks={board.tasks} />
         )}
         <StyledLink onClick={openModal}>Add task</StyledLink>
         <Modal isOpen={isAddingNewTask}>

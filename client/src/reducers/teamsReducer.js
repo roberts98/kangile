@@ -7,7 +7,8 @@ import {
   TEAM_BOARDS_ORDER_SUCCESS,
   TASK_CREATE_FAILURE,
   TASK_CREATE_SUCCESS,
-  TASK_REQUESTED
+  TASK_REQUESTED,
+  TASK_DELETE_SUCCESS
 } from '../contants/teamsStore';
 
 const initialState = {
@@ -18,6 +19,8 @@ const initialState = {
 };
 
 function teamsReducer(state = initialState, action) {
+  let index = 0;
+
   switch (action.type) {
     case TEAMS_REQUESTED:
       return {
@@ -63,10 +66,11 @@ function teamsReducer(state = initialState, action) {
       };
 
     case TASK_CREATE_SUCCESS:
-      const modifiedBoard = state.activeTeam.boards.filter(
-        board => board._id === action.payload.board._id
-      )[0];
-      const index = state.activeTeam.boards.indexOf(modifiedBoard);
+      state.activeTeam.boards.map((board, i) => {
+        if (board._id === action.payload.board._id) {
+          index = i;
+        }
+      });
 
       return {
         ...state,
@@ -78,6 +82,25 @@ function teamsReducer(state = initialState, action) {
           )
         }
       };
+
+    case TASK_DELETE_SUCCESS: {
+      state.activeTeam.boards.map((board, i) => {
+        if (board._id === action.payload.board._id) {
+          index = i;
+        }
+      });
+
+      return {
+        ...state,
+        loadingId: null,
+        activeTeam: {
+          ...state.activeTeam,
+          boards: state.activeTeam.boards.map((board, i) =>
+            i === index ? action.payload.board : board
+          )
+        }
+      };
+    }
 
     default:
       return { ...state };

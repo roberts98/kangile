@@ -34,6 +34,8 @@ function BoardsContainer({ match }) {
     dispatch(getTeam(match.params.id));
   }, [dispatch, match.params.id]);
 
+  console.log(boards);
+
   return (
     <Layout withNavbar>
       <Container>
