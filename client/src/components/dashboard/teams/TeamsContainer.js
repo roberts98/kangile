@@ -64,7 +64,6 @@ const TeamsContent = styled(Container)`
 
 function TeamsContainer() {
   const { isLoading, teams } = useSelector(state => state.teams);
-  console.log(useSelector(state => state));
 
   return (
     <Fragment>

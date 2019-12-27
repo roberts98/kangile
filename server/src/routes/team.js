@@ -44,6 +44,7 @@ router.get('/:id', auth, async (req, res) => {
   try {
     const team = await Team.findById(req.params.id)
       .populate('boards')
+      .populate('members')
       .exec();
 
     res.send(team);

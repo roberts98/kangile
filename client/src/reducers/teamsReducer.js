@@ -14,7 +14,8 @@ import {
 const initialState = {
   teams: [],
   activeTeam: {
-    boards: []
+    boards: [],
+    members: []
   }
 };
 

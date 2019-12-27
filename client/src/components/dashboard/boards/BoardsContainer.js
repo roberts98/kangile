@@ -9,15 +9,17 @@ import { getTeam, updateTeamBoardsOrder } from '../../../actions/teams';
 import Layout from '../../Layout';
 import Board from './Board';
 import FullSpinner from '../../spinners/FullSpinner';
+import TeamSummarySidebar from '../teams/TeamSummarySidebar';
 
 function BoardsContainer({ match }) {
   const dispatch = useDispatch();
-  const boards = useSelector(state => state.teams.activeTeam.boards);
+  const team = useSelector(state => state.teams.activeTeam);
   const isLoading = useSelector(state => state.teams.isLoading);
-  const [stateBoards, setStateBoards] = useState(boards);
+  const [stateBoards, setStateBoards] = useState(team.boards);
 
   const moveCard = useCallback(
     (dragIndex, hoverIndex) => {
+      const { boards } = team;
       const dragBoard = boards[dragIndex];
       const boardsOrder = update(boards, {
         $splice: [[dragIndex, 1], [hoverIndex, 0, dragBoard]]
@@ -25,12 +27,12 @@ function BoardsContainer({ match }) {
       setStateBoards(boardsOrder);
       dispatch(updateTeamBoardsOrder(match.params.id, boardsOrder));
     },
-    [boards, match.params.id, dispatch]
+    [team.boards, match.params.id, dispatch]
   );
 
   useEffect(() => {
-    setStateBoards(boards);
-  }, [boards]);
+    setStateBoards(team.boards);
+  }, [team.boards]);
 
   useEffect(() => {
     dispatch(getTeam(match.params.id));
@@ -44,7 +46,9 @@ function BoardsContainer({ match }) {
     <Layout withNavbar>
       <Container>
         <Row>
-          <Col md="3">Summary</Col>
+          <Col md="3">
+            <TeamSummarySidebar team={team} />
+          </Col>
           <Col md="9">
             <Row>
               <DndProvider backend={HTML5Backed}>
