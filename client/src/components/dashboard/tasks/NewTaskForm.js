@@ -6,6 +6,7 @@ import { createTask } from '../../../actions/boards';
 import Input from '../../forms/Input';
 import { Button } from '../teams/TeamsContainer';
 import Datepicker from './Datepicker';
+import Autocomplete from './Autocomplete';
 
 const InputGroup = styled.div`
   margin-bottom: 13px;
@@ -20,6 +21,7 @@ function NewTaskForm({ boardId, handleModalClose }) {
   const [deadline, setDeadline] = useState(new Date());
   const dispatch = useDispatch();
   const username = useSelector(state => state.auth.user.username);
+  const { members } = useSelector(state => state.teams.activeTeam);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -40,6 +42,7 @@ function NewTaskForm({ boardId, handleModalClose }) {
       <form onSubmit={handleSubmit}>
         <InputGroup>
           <Input
+            required
             type="text"
             placeholder="Task name"
             onChange={value => setName(value)}
@@ -47,19 +50,20 @@ function NewTaskForm({ boardId, handleModalClose }) {
         </InputGroup>
         <InputGroup>
           <Input
+            required
             type="text"
             placeholder="Description"
             onChange={value => setDescription(value)}
           />
         </InputGroup>
         <InputGroup>
-          <Input disabled type="text" placeholder={username} />
+          <Input required disabled type="text" placeholder={username} />
         </InputGroup>
         <InputGroup>
-          <Input
-            type="text"
-            placeholder="Asignee"
-            onChange={value => setAsignee(value)}
+          <Autocomplete
+            value={asignee}
+            handleChange={setAsignee}
+            values={members}
           />
         </InputGroup>
         <InputGroup>

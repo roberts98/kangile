@@ -11,21 +11,12 @@ const StyledInput = styled.input`
   border: 2px solid ${COLOR_DARK};
 `;
 
-function Input({ placeholder, type, onChange, value, className, disabled }) {
+function Input({ onChange, ...rest }) {
   function handleChange(e) {
     onChange(e.target.value);
   }
 
-  return (
-    <StyledInput
-      disabled={disabled}
-      onChange={handleChange}
-      className={className}
-      value={value}
-      type={type}
-      placeholder={placeholder}
-    />
-  );
+  return <StyledInput onChange={handleChange} {...rest} />;
 }
 
 export default Input;
