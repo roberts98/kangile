@@ -1,10 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Container } from 'react-bootstrap';
 
 import LoginForm from '../../components/auth/LoginForm';
 import Layout from '../../components/Layout';
-import { H100Container } from '../../components/grid/Container';
-import { H100Row } from '../../components/grid/Row';
 
 const Wrapper = styled.div`
   background: #e0e0e0;
@@ -18,13 +17,11 @@ const Wrapper = styled.div`
 function LoginPage() {
   return (
     <Layout withNavbar>
-      <H100Container>
-        <H100Row center>
-          <Wrapper>
-            <LoginForm />
-          </Wrapper>
-        </H100Row>
-      </H100Container>
+      <Container>
+        <Wrapper>
+          <LoginForm />
+        </Wrapper>
+      </Container>
     </Layout>
   );
 }
