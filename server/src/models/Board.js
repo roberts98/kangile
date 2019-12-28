@@ -29,6 +29,9 @@ const boardSchema = new mongoose.Schema(
         asignee: {
           type: String,
           required: true
+        },
+        deadline: {
+          type: Date
         }
       }
     ]

@@ -35,6 +35,12 @@ export const Button = styled.button`
 
   a {
     color: ${COLOR_WHITE};
+
+    &:hover,
+    &:active,
+    &:focus {
+      text-decoration: none;
+    }
   }
 `;
 
@@ -74,7 +80,9 @@ function TeamsContainer() {
           <H2>You need to create team* before start</H2>
           <H4>*team can have 1 member</H4>
           <ButtonWrapper>
-            <Button big>Create team</Button>
+            <Button big>
+              <Link to="/user/teams/create">Create team</Link>
+            </Button>
           </ButtonWrapper>
         </Content>
       ) : (

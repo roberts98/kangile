@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { createTask } from '../../../actions/boards';
 import Input from '../../forms/Input';
 import { Button } from '../teams/TeamsContainer';
+import Datepicker from './Datepicker';
 
 const InputGroup = styled.div`
   margin-bottom: 13px;
@@ -16,7 +17,7 @@ function NewTaskForm({ boardId, handleModalClose }) {
   const [attachments, setAttachments] = useState([]);
   const [tags, setTags] = useState([]);
   const [asignee, setAsignee] = useState('');
-  const [deadline, setDeadline] = useState('');
+  const [deadline, setDeadline] = useState(new Date());
   const dispatch = useDispatch();
   const username = useSelector(state => state.auth.user.username);
 
@@ -25,7 +26,8 @@ function NewTaskForm({ boardId, handleModalClose }) {
     const data = {
       name,
       description,
-      author: 'x',
+      author: username,
+      deadline,
       asignee
     };
 
@@ -59,6 +61,9 @@ function NewTaskForm({ boardId, handleModalClose }) {
             placeholder="Asignee"
             onChange={value => setAsignee(value)}
           />
+        </InputGroup>
+        <InputGroup>
+          <Datepicker value={deadline} handleChange={setDeadline} />
         </InputGroup>
         <Button type="submit">Create!</Button>
       </form>
