@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import { COLOR_PRIMARY } from '../contants/styles';
 import Navbar from './common/navbar/NavbarUser';
+import Header from './common/LoadingBar';
 
 const PageWrapper = styled.div`
   display: flex;
@@ -19,6 +20,7 @@ const Main = styled.div`
 function Layout({ children, withNavbar, blue }) {
   return (
     <PageWrapper>
+      <Header />
       {withNavbar && <Navbar color={COLOR_PRIMARY} />}
       <Main blue={blue}>{children}</Main>
     </PageWrapper>

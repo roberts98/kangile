@@ -1,13 +1,13 @@
 import {
   TEAMS_FETCH_FAILURE,
   TEAMS_FETCH_SUCCESS,
-  TEAMS_REQUESTED,
+  TEAMS_REQUEST_BAR,
   TEAM_CREATE_SUCCESS,
   TEAM_FETCH_SUCCESS,
   TEAM_BOARDS_ORDER_SUCCESS,
   TASK_CREATE_FAILURE,
   TASK_CREATE_SUCCESS,
-  TASK_REQUESTED,
+  TASK_REQUEST_BAR,
   TASK_DELETE_SUCCESS,
   TASK_BOARD_SUCCESS
 } from '../contants/teamsStore';
@@ -24,7 +24,7 @@ function teamsReducer(state = initialState, action) {
   let index = 0;
 
   switch (action.type) {
-    case TEAMS_REQUESTED:
+    case TEAMS_REQUEST_BAR:
       return {
         ...state,
         isLoading: true
@@ -61,7 +61,7 @@ function teamsReducer(state = initialState, action) {
         activeTeam: { ...state.activeTeam, boards: action.payload }
       };
 
-    case TASK_REQUESTED:
+    case TASK_REQUEST_BAR:
       return {
         ...state,
         loadingId: action.payload

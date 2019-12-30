@@ -1,7 +1,7 @@
 import {
   TEAMS_FETCH_FAILURE,
   TEAMS_FETCH_SUCCESS,
-  TEAMS_REQUESTED,
+  TEAMS_REQUEST_BAR,
   TEAM_CREATE_FAILURE,
   TEAM_CREATE_SUCCESS,
   TEAM_FETCH_FAILURE,
@@ -27,7 +27,7 @@ export const getTeams = () => {
     }
 
     dispatch({
-      type: TEAMS_REQUESTED
+      type: TEAMS_REQUEST_BAR
     });
 
     try {
@@ -52,7 +52,7 @@ export const getTeam = id => {
     }
 
     dispatch({
-      type: TEAMS_REQUESTED
+      type: TEAMS_REQUEST_BAR
     });
 
     try {
@@ -78,7 +78,7 @@ export const createTeam = (name, description) => {
     }
 
     dispatch({
-      type: TEAMS_REQUESTED
+      type: TEAMS_REQUEST_BAR
     });
 
     try {

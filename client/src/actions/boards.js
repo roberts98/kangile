@@ -4,14 +4,14 @@ import {
   updateTasksBoardRequest
 } from '../services/boards.service';
 import {
-  TASK_REQUESTED,
+  TASK_REQUEST_BAR,
   TASK_CREATE_SUCCESS,
   TASK_CREATE_FAILURE,
   TASK_DELETE_FAILURE,
   TASK_DELETE_SUCCESS,
   TASK_BOARD_SUCCESS,
   TASK_BOARD_FAILURE,
-  TASK_BOARD_REQUESTED
+  TASK_BOARD_REQUEST_BAR
 } from '../contants/teamsStore';
 
 export const createTask = (boardId, data) => {
@@ -27,7 +27,7 @@ export const createTask = (boardId, data) => {
     }
 
     dispatch({
-      type: TASK_REQUESTED,
+      type: TASK_REQUEST_BAR,
       payload: boardId
     });
 
@@ -53,7 +53,7 @@ export const deleteTask = (boardId, taskId) => {
     }
 
     dispatch({
-      type: TASK_REQUESTED,
+      type: TASK_REQUEST_BAR,
       payload: boardId
     });
 
@@ -79,7 +79,7 @@ export const updateTasksBoard = (id, boards) => {
     }
 
     dispatch({
-      type: TASK_BOARD_REQUESTED
+      type: TASK_BOARD_REQUEST_BAR
     });
 
     try {

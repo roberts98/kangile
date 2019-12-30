@@ -1,8 +1,8 @@
 import {
-  REGISTER_REQUEST,
+  REGISTER_REQUEST_BAR,
   REGISTER_SUCCESS,
   REGISTER_FAILURE,
-  LOGIN_REQUEST,
+  LOGIN_REQUEST_BAR,
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
   CLEAR_ERRORS,
@@ -42,7 +42,7 @@ export const register = (username, email, password) => {
     }
 
     dispatch({
-      type: REGISTER_REQUEST
+      type: REGISTER_REQUEST_BAR
     });
 
     try {
@@ -67,7 +67,7 @@ export const login = (email, password) => {
     }
 
     dispatch({
-      type: LOGIN_REQUEST
+      type: LOGIN_REQUEST_BAR
     });
 
     try {

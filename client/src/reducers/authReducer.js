@@ -1,9 +1,9 @@
 import {
-  REGISTER_REQUEST,
+  REGISTER_REQUEST_BAR,
   REGISTER_SUCCESS,
   REGISTER_FAILURE,
   CLEAR_ERRORS,
-  LOGIN_REQUEST,
+  LOGIN_REQUEST_BAR,
   LOGIN_FAILURE,
   LOGIN_SUCCESS,
   LOGOUT
@@ -23,8 +23,8 @@ function authReducer(state = initialState, action) {
         ...state,
         error: null
       };
-    case REGISTER_REQUEST:
-    case LOGIN_REQUEST:
+    case REGISTER_REQUEST_BAR:
+    case LOGIN_REQUEST_BAR:
       return {
         ...state,
         isLoading: true

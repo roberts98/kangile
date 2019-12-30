@@ -57,7 +57,6 @@ const TaskList = styled.div``;
 
 function Board({ board, index, id }) {
   const [isAddingNewTask, setIsAddingNewTask] = useState(false);
-  const loadingId = useSelector(state => state.teams.loadingId);
 
   function handleClick() {
     setIsAddingNewTask(true);
@@ -71,20 +70,16 @@ function Board({ board, index, id }) {
     <Col md="4">
       <StyledDiv className="box">
         <Name>{board.name}</Name>
-        {loadingId === id ? (
-          <SmallSpinner />
-        ) : (
-          <Droppable droppableId={id}>
-            {provided => (
-              <TaskList ref={provided.innerRef} {...provided.droppableProps}>
-                {board.tasks.map((task, i) => (
-                  <Task boardId={id} key={task._id} index={i} task={task} />
-                ))}
-                {provided.placeholder}
-              </TaskList>
-            )}
-          </Droppable>
-        )}
+        <Droppable droppableId={id}>
+          {provided => (
+            <TaskList ref={provided.innerRef} {...provided.droppableProps}>
+              {board.tasks.map((task, i) => (
+                <Task boardId={id} key={task._id} index={i} task={task} />
+              ))}
+              {provided.placeholder}
+            </TaskList>
+          )}
+        </Droppable>
         <StyledLink onClick={handleClick}>Add task</StyledLink>
         <Modal handleClose={handleModalClose} isOpen={isAddingNewTask}>
           <NewTaskForm handleModalClose={handleModalClose} boardId={id} />
