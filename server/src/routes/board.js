@@ -58,4 +58,34 @@ router.get('/:boardId/:taskId', auth, async (req, res) => {
   }
 });
 
+router.patch('/:boardId/:taskId', auth, async (req, res) => {
+  try {
+    const { boardId, taskId } = req.params;
+    const { key, value } = req.body;
+    const board = await Board.findById(boardId);
+    let index = 0;
+
+    const task = board.tasks
+      .filter((task, i) => {
+        index = i;
+        return task._id.toString() === taskId;
+      })[0]
+      .toObject();
+
+    if (key === 'comments') {
+      task[key] = [...task[key], value];
+    } else {
+      task[key] = value;
+    }
+
+    board.tasks[index] = task;
+
+    await board.save();
+
+    res.status(200).send({ data: board.tasks[index][key] });
+  } catch (error) {
+    res.status(401).send();
+  }
+});
+
 module.exports = router;

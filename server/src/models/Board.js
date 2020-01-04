@@ -36,7 +36,11 @@ const boardSchema = new mongoose.Schema(
         tags: [{ type: String }],
         comments: [
           {
-            author: {
+            authorId: {
+              type: String,
+              required: true
+            },
+            username: {
               type: String,
               required: true
             },
