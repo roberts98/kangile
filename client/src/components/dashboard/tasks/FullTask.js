@@ -87,7 +87,7 @@ function FullTask(props) {
             <Text>{task.description}</Text>
             <Heading>Tags</Heading>
             {task.tags.map(tag => (
-              <Tag>{tag}</Tag>
+              <Tag key={tag}>{tag}</Tag>
             ))}
             <Heading>Created by</Heading>
             <div>

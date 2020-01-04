@@ -13,6 +13,7 @@ import {
 
 const initialState = {
   teams: [],
+  isLoading: true,
   activeTeam: {
     boards: [],
     members: []

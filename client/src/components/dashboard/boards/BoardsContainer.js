@@ -22,8 +22,10 @@ function BoardsContainer({ match }) {
   }, [team.boards]);
 
   useEffect(() => {
-    dispatch(getTeam(match.params.id));
-  }, [dispatch, match.params.id]);
+    if (team._id !== match.params.id) {
+      dispatch(getTeam(match.params.id));
+    }
+  }, [dispatch, match.params.id, team._id]);
 
   function handleDragEnd(result) {
     const { destination, source, draggableId } = result;
