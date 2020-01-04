@@ -1,9 +1,10 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { Container, Row, Col } from 'react-bootstrap';
 
+import { getTeams } from '../../../actions/teams';
 import Team from './Team';
 import FullSpinner from '../../spinners/FullSpinner';
 import { COLOR_PRIMARY, COLOR_WHITE } from '../../../contants/styles';
@@ -70,6 +71,13 @@ const TeamsContent = styled(Container)`
 
 function TeamsContainer() {
   const { isLoading, teams } = useSelector(state => state.teams);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (teams === null) {
+      dispatch(getTeams());
+    }
+  }, [teams, dispatch]);
 
   return (
     <Fragment>

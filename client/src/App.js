@@ -1,9 +1,7 @@
-import React, { Fragment, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { Fragment } from 'react';
 import { createGlobalStyle } from 'styled-components';
 import { ToastContainer } from 'react-toastify';
 
-import { getTeams } from './actions/teams';
 import Router from './routes/Router';
 
 const GlobalStyles = createGlobalStyle`
@@ -19,12 +17,6 @@ const GlobalStyles = createGlobalStyle`
 `;
 
 function App() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getTeams());
-  }, [dispatch]);
-
   return (
     <Fragment>
       <ToastContainer />
