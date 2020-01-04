@@ -15,7 +15,7 @@ const InputGroup = styled.div`
 function NewTaskForm({ boardId, handleModalClose }) {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
-  const [attachments, setAttachments] = useState([]);
+  // const [attachments, setAttachments] = useState([]);
   const [tags, setTags] = useState('');
   const [asignee, setAsignee] = useState('');
   const [deadline, setDeadline] = useState(new Date());

@@ -8,7 +8,6 @@ import {
   COLOR_LIGHT,
   COLOR_DARK,
   COLOR_PRIMARY,
-  COLOR_BLACK,
   COLOR_GRAPHITE
 } from '../../../contants/styles';
 import { Button } from './TeamsContainer';

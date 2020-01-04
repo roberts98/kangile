@@ -5,7 +5,6 @@ import {
   TEAM_CREATE_SUCCESS,
   TEAM_FETCH_SUCCESS,
   TEAM_BOARDS_ORDER_SUCCESS,
-  TASK_CREATE_FAILURE,
   TASK_CREATE_SUCCESS,
   TASK_REQUEST_BAR,
   TASK_DELETE_SUCCESS,
@@ -68,6 +67,7 @@ function teamsReducer(state = initialState, action) {
       };
 
     case TASK_CREATE_SUCCESS:
+      // eslint-disable-next-line
       state.activeTeam.boards.map((board, i) => {
         if (board._id === action.payload.board._id) {
           return (index = i);
@@ -86,6 +86,7 @@ function teamsReducer(state = initialState, action) {
       };
 
     case TASK_DELETE_SUCCESS:
+      // eslint-disable-next-line
       state.activeTeam.boards.map((board, i) => {
         if (board._id === action.payload.board._id) {
           return (index = i);

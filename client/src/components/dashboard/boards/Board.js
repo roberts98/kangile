@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { Col } from 'react-bootstrap';
 import { Droppable } from 'react-beautiful-dnd';
@@ -12,7 +11,6 @@ import {
 } from '../../../contants/styles';
 import plus from '../../../assets/blue_plus.svg';
 import NewTaskForm from '../tasks/NewTaskForm';
-import SmallSpinner from '../../spinners/SmallSpinner';
 import Task from '../tasks/Task';
 
 const StyledDiv = styled.div`
