@@ -1,7 +1,5 @@
 import React from 'react';
 import { Router, Switch } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 import history from './history';
 import PrivateRoute from './PrivateRoute';
@@ -16,7 +14,6 @@ import FullTask from '../components/dashboard/tasks/FullTask';
 function PageRouter() {
   return (
     <Router history={history}>
-      <ToastContainer />
       <Switch>
         <PrivateRoute path="/user/teams/create" exact component={CreateTeam} />
         <PrivateRoute

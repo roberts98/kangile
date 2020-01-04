@@ -27,7 +27,7 @@ router.post('/login', async (req, res) => {
 
     res.status(200).send({ user, token });
   } catch (error) {
-    res.status(400).send();
+    res.status(400).send({ error: 'Unable to login' });
   }
 });
 

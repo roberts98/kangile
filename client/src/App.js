@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { createGlobalStyle } from 'styled-components';
+import { ToastContainer } from 'react-toastify';
 
 import { getTeams } from './actions/teams';
 import Router from './routes/Router';
@@ -26,6 +27,7 @@ function App() {
 
   return (
     <Fragment>
+      <ToastContainer />
       <GlobalStyles />
       <Router />
     </Fragment>

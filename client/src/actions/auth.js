@@ -62,8 +62,8 @@ export const login = (email, password) => {
       storeUserData(user.data);
     }
 
-    function onError(error) {
-      dispatch({ type: LOGIN_FAILURE, payload: error });
+    function onError(res) {
+      dispatch({ type: LOGIN_FAILURE, payload: res.data.error });
     }
 
     dispatch({

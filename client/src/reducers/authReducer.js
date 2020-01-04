@@ -23,6 +23,7 @@ function authReducer(state = initialState, action) {
         ...state,
         error: null
       };
+
     case REGISTER_REQUEST_BAR:
     case LOGIN_REQUEST_BAR:
       return {
