@@ -32,7 +32,8 @@ const boardSchema = new mongoose.Schema(
         },
         deadline: {
           type: Date
-        }
+        },
+        tags: [{ type: String }]
       }
     ]
   },

@@ -16,7 +16,7 @@ function NewTaskForm({ boardId, handleModalClose }) {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [attachments, setAttachments] = useState([]);
-  const [tags, setTags] = useState([]);
+  const [tags, setTags] = useState('');
   const [asignee, setAsignee] = useState('');
   const [deadline, setDeadline] = useState(new Date());
   const dispatch = useDispatch();
@@ -25,12 +25,14 @@ function NewTaskForm({ boardId, handleModalClose }) {
 
   function handleSubmit(e) {
     e.preventDefault();
+    const splittedTags = tags.split(', ');
     const data = {
       name,
       description,
       author: username,
       deadline,
-      asignee
+      asignee,
+      tags: splittedTags
     };
 
     dispatch(createTask(boardId, data));
@@ -54,6 +56,13 @@ function NewTaskForm({ boardId, handleModalClose }) {
             type="text"
             placeholder="Description"
             onChange={value => setDescription(value)}
+          />
+        </InputGroup>
+        <InputGroup>
+          <Input
+            type="text"
+            placeholder="Tags (split by ,)"
+            onChange={value => setTags(value)}
           />
         </InputGroup>
         <InputGroup>
