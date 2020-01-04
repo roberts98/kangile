@@ -44,4 +44,18 @@ router.delete('/:boardId/:taskId', auth, async (req, res) => {
   }
 });
 
+router.get('/:boardId/:taskId', auth, async (req, res) => {
+  try {
+    const { boardId, taskId } = req.params;
+    const board = await Board.findById(boardId);
+    const task = board.tasks.filter(task => task._id.toString() === taskId)[0];
+    const asignee = await User.findById(task.asignee);
+    const author = await User.findById(task.author);
+
+    res.status(200).send({ task: { ...task.toObject(), asignee, author } });
+  } catch (error) {
+    res.status(401).send();
+  }
+});
+
 module.exports = router;

@@ -21,6 +21,16 @@ export async function deleteTaskRequest(token, boardId, taskId) {
     }
   });
 }
+
+export async function getTaskRequest(token, boardId, taskId) {
+  return axios(`/boards/${boardId}/${taskId}`, {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  });
+}
+
 export async function updateTasksBoardRequest(token, teamId, boards) {
   return axios(`/teams/${teamId}/updateTasks`, {
     method: 'PATCH',

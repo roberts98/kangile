@@ -16,7 +16,6 @@ function BoardsContainer({ match }) {
   const team = useSelector(state => state.teams.activeTeam);
   const { isLoading, isBoardLoading } = useSelector(state => state.teams);
   const [stateBoards, setStateBoards] = useState(team.boards);
-  console.log(isBoardLoading);
 
   useEffect(() => {
     setStateBoards(team.boards);

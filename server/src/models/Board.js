@@ -33,7 +33,19 @@ const boardSchema = new mongoose.Schema(
         deadline: {
           type: Date
         },
-        tags: [{ type: String }]
+        tags: [{ type: String }],
+        comments: [
+          {
+            author: {
+              type: String,
+              required: true
+            },
+            message: {
+              type: String,
+              required: true
+            }
+          }
+        ]
       }
     ]
   },

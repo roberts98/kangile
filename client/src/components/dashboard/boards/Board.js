@@ -11,7 +11,7 @@ import {
 } from '../../../contants/styles';
 import plus from '../../../assets/blue_plus.svg';
 import NewTaskForm from '../tasks/NewTaskForm';
-import Task from '../tasks/Task';
+import Task from '../tasks/DraggableTask';
 
 const StyledDiv = styled.div`
   background-color: ${COLOR_LIGHT};

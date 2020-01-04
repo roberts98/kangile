@@ -11,6 +11,7 @@ import HomePage from '../pages/public/HomePage';
 import Dashboard from '../pages/private/Dashboard';
 import CreateTeam from '../pages/private/CreateTeam';
 import BoardsContainer from '../components/dashboard/boards/BoardsContainer';
+import FullTask from '../components/dashboard/tasks/FullTask';
 
 function PageRouter() {
   return (
@@ -18,7 +19,15 @@ function PageRouter() {
       <ToastContainer />
       <Switch>
         <PrivateRoute path="/user/teams/create" exact component={CreateTeam} />
-        <PrivateRoute path="/user/teams/:id" component={BoardsContainer} />
+        <PrivateRoute
+          path="/user/teams/:id"
+          exact
+          component={BoardsContainer}
+        />
+        <PrivateRoute
+          path="/user/teams/:boardId/:taskId"
+          component={FullTask}
+        />
         <PrivateRoute path="/user" component={Dashboard} />
         <PublicRoute path="/login" component={LoginPage} />
         <PublicRoute path="/" component={HomePage} />
