@@ -31,6 +31,19 @@ export async function getTaskRequest(token, boardId, taskId) {
   });
 }
 
+export async function updateTaskRequest(token, boardId, taskId, key, value) {
+  return axios(`/boards/${boardId}/${taskId}`, {
+    method: 'PATCH',
+    headers: {
+      Authorization: `Bearer ${token}`
+    },
+    data: {
+      key,
+      value
+    }
+  });
+}
+
 export async function updateTasksBoardRequest(token, teamId, boards) {
   return axios(`/teams/${teamId}/updateTasks`, {
     method: 'PATCH',

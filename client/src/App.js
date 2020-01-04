@@ -12,7 +12,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @import url('https://fonts.googleapis.com/css?family=Ubuntu:300,400,500&display=swap');
+    @import url('https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700&display=swap');
     font-family: 'Ubuntu', Arial, sans-serif;
   }
 `;

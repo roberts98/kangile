@@ -9,6 +9,8 @@ import Layout from '../../Layout';
 import FullSpinner from '../../spinners/FullSpinner';
 import { COLOR_PRIMARY, COLOR_WHITE } from '../../../contants/styles';
 import avatar from '../../../assets/avatar.png';
+import CommentsForm from './CommentsForm';
+import Comment from './Comment';
 
 const StyledRow = styled(Row)`
   justify-content: space-between;
@@ -73,6 +75,10 @@ function FullTask(props) {
     })();
   }, [boardId, taskId, token]);
 
+  function handleUpdate(key, value) {
+    setTask(prevTask => ({ ...prevTask, [key]: value }));
+  }
+
   if (isLoading) {
     return <FullSpinner />;
   }
@@ -104,6 +110,16 @@ function FullTask(props) {
             <Heading>Deadline</Heading>
             <Date>{moment(task.deadline).format('DD.MM.YYYY gg:mm')}</Date>
             <Heading>Comments</Heading>
+            {task.comments.map(comment => (
+              <Comment key={comment._id} comment={comment}>
+                {comment.message}
+              </Comment>
+            ))}
+            <CommentsForm
+              handleUpdate={handleUpdate}
+              boardId={boardId}
+              taskId={taskId}
+            />
           </Col>
         </StyledRow>
       </Container>

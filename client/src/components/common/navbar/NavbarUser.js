@@ -52,8 +52,8 @@ function NavbarUser() {
           <H1 color={COLOR_PRIMARY} title="KANGILE" />
         </StyledLink>
         <Right>
-          <Icon to="/#" bg={plus} />
-          <Icon to="/#" bg={home} />
+          <Icon to="/user/teams/create" bg={plus} />
+          <Icon to="/" bg={home} />
           <UserIcon handleClick={handleClick} char="R" />
         </Right>
       </Inner>
