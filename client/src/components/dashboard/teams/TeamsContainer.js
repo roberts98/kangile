@@ -6,7 +6,6 @@ import { Container, Row, Col } from 'react-bootstrap';
 
 import { teamsSelector } from '../../../selectors/teams';
 import Team from './Team';
-import FullSpinner from '../../spinners/FullSpinner';
 import { COLOR_PRIMARY, COLOR_WHITE } from '../../../contants/styles';
 import SearchForm from './SearchForm';
 
@@ -71,14 +70,12 @@ const TeamsContent = styled(Container)`
 `;
 
 function TeamsContainer() {
-  const { isLoading, searchTerm } = useSelector(state => state.teams);
+  const { searchTerm } = useSelector(state => state.teams);
   const teams = teamsSelector(useSelector(state => state.teams));
 
   return (
     <Fragment>
-      {isLoading ? (
-        <FullSpinner isLoading={isLoading} />
-      ) : teams.length === 0 && !searchTerm ? (
+      {teams.length === 0 && !searchTerm ? (
         <Content>
           <H2>You need to create team* before start</H2>
           <H4>*team can have 1 member</H4>

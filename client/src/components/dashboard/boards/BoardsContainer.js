@@ -7,15 +7,13 @@ import { getTeam } from '../../../actions/teams';
 import { updateTasksBoard } from '../../../actions/boards';
 import Layout from '../../Layout';
 import Board from './Board';
-import FullSpinner from '../../spinners/FullSpinner';
 import TeamSummarySidebar from '../teams/TeamSummarySidebar';
-import SmallSpinner from '../../spinners/SmallSpinner';
 
 function BoardsContainer({ match }) {
   const dispatch = useDispatch();
   const team = useSelector(state => state.teams.activeTeam);
-  const { isLoading, isBoardLoading } = useSelector(state => state.teams);
   const [stateBoards, setStateBoards] = useState(team.boards);
+  console.log(useSelector(state => state));
 
   useEffect(() => {
     setStateBoards(team.boards);
@@ -88,8 +86,8 @@ function BoardsContainer({ match }) {
     setStateBoards(newFinish);
   }
 
-  if (isLoading) {
-    return <FullSpinner />;
+  if (match.params.id !== team._id) {
+    return null;
   }
 
   return (
@@ -101,20 +99,16 @@ function BoardsContainer({ match }) {
           </Col>
           <Col md="9">
             <Row>
-              {isBoardLoading ? (
-                <SmallSpinner />
-              ) : (
-                <DragDropContext onDragEnd={handleDragEnd}>
-                  {stateBoards.map((board, index) => (
-                    <Board
-                      key={board._id}
-                      index={index}
-                      id={board._id}
-                      board={board}
-                    />
-                  ))}
-                </DragDropContext>
-              )}
+              <DragDropContext onDragEnd={handleDragEnd}>
+                {stateBoards.map((board, index) => (
+                  <Board
+                    key={board._id}
+                    index={index}
+                    id={board._id}
+                    board={board}
+                  />
+                ))}
+              </DragDropContext>
             </Row>
           </Col>
         </Row>

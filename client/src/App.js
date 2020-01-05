@@ -1,10 +1,11 @@
 import React, { Fragment, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { createGlobalStyle } from 'styled-components';
 import { ToastContainer } from 'react-toastify';
 
 import Router from './routes/Router';
 import { getTeams } from './actions/teams';
+import FullSpinner from './components/spinners/FullSpinner';
 
 const GlobalStyles = createGlobalStyle`
   body {
@@ -20,16 +21,22 @@ const GlobalStyles = createGlobalStyle`
 
 function App() {
   const dispatch = useDispatch();
+  const {
+    teams: { teams, isLoading },
+    auth: { token }
+  } = useSelector(state => state);
 
   useEffect(() => {
-    dispatch(getTeams());
-  }, [dispatch]);
+    if (teams === null && token) {
+      dispatch(getTeams());
+    }
+  }, [teams, dispatch, token]);
 
   return (
     <Fragment>
       <ToastContainer />
       <GlobalStyles />
-      <Router />
+      {!token ? <Router /> : isLoading ? <FullSpinner /> : <Router />}
     </Fragment>
   );
 }

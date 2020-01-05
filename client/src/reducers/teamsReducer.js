@@ -13,7 +13,7 @@ import {
 } from '../contants/teamsStore';
 
 const initialState = {
-  teams: [],
+  teams: null,
   isLoading: true,
   searchTerm: '',
   activeTeam: {

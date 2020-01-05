@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 
 import { createTeam } from '../../../actions/teams';
 import Input from '../../forms/Input';
 import Button from '../../forms/Button';
-import FullSpinner from '../../spinners/FullSpinner';
+import SearchForm from './SearchForm';
 
 const StyledForm = styled.form`
   text-align: center;
@@ -25,7 +25,6 @@ const StyledButton = styled(Button)`
 function CreateTeamForm() {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
-  const isLoading = useSelector(state => state.teams.isLoading);
   const dispatch = useDispatch();
 
   function handleNameChange(value) {
@@ -39,10 +38,6 @@ function CreateTeamForm() {
   function handleSubmit(e) {
     e.preventDefault();
     dispatch(createTeam(name, description));
-  }
-
-  if (isLoading) {
-    return <FullSpinner />;
   }
 
   return (
