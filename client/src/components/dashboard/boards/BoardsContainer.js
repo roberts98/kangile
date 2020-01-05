@@ -8,12 +8,12 @@ import { updateTasksBoard } from '../../../actions/boards';
 import Layout from '../../Layout';
 import Board from './Board';
 import TeamSummarySidebar from '../teams/TeamSummarySidebar';
+import FullSpinner from '../../spinners/FullSpinner';
 
 function BoardsContainer({ match }) {
   const dispatch = useDispatch();
   const team = useSelector(state => state.teams.activeTeam);
   const [stateBoards, setStateBoards] = useState(team.boards);
-  console.log(useSelector(state => state));
 
   useEffect(() => {
     setStateBoards(team.boards);
@@ -87,7 +87,7 @@ function BoardsContainer({ match }) {
   }
 
   if (match.params.id !== team._id) {
-    return null;
+    return <FullSpinner />;
   }
 
   return (

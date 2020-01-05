@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import { createTeam } from '../../../actions/teams';
 import Input from '../../forms/Input';
 import Button from '../../forms/Button';
-import SearchForm from './SearchForm';
 
 const StyledForm = styled.form`
   text-align: center;

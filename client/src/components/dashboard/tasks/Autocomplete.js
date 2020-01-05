@@ -40,7 +40,7 @@ function Autocomplete({ value, handleChange, values }) {
       renderMenu={items => <Menu children={items}></Menu>}
       getItemValue={item => item.username}
       items={values}
-      renderItem={item => <Item>{item.username}</Item>}
+      renderItem={item => <Item key={item.username}>{item.username}</Item>}
       value={value}
       renderInput={props => <input required style={styles} {...props} />}
       onChange={e => handleChange(e.target.value)}

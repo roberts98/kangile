@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { filterTeams } from '../../../actions/teams';
+import { filterTeams } from '../../../actions/filters';
 import Input from '../../forms/Input';
 
 function SearchForm() {
-  const [phrase, setPhrase] = useState('');
+  const [phrase, setPhrase] = useState(
+    useSelector(state => state.filters.searchTerm)
+  );
   const dispatch = useDispatch();
 
   function handleChange(value) {

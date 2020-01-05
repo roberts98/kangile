@@ -1,8 +1,8 @@
 import { createSelector } from 'reselect';
 
-const teams = state => state.teams;
+const teams = state => state.teams.teams;
 
-const searchTeamSelector = state => state.searchTerm;
+const searchTeamSelector = state => state.filters.searchTerm;
 
 export const teamsSelector = createSelector(
   teams,

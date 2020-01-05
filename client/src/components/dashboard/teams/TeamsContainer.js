@@ -70,8 +70,8 @@ const TeamsContent = styled(Container)`
 `;
 
 function TeamsContainer() {
-  const { searchTerm } = useSelector(state => state.teams);
-  const teams = teamsSelector(useSelector(state => state.teams));
+  const { searchTerm } = useSelector(state => state.filters);
+  const teams = teamsSelector(useSelector(state => state));
 
   return (
     <Fragment>

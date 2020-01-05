@@ -7,12 +7,14 @@ import {
 
 import authReducer from '../reducers/authReducer';
 import teamsReducer from '../reducers/teamsReducer';
+import filtersReducer from '../reducers/filtersReducer';
 
 export default () => {
   const store = createStore(
     combineReducers({
       auth: authReducer,
       teams: teamsReducer,
+      filters: filtersReducer,
       loadingBar: loadingBarReducer
     }),
     applyMiddleware(
