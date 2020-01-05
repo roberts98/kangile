@@ -8,12 +8,14 @@ import {
   TASK_CREATE_SUCCESS,
   TASK_REQUEST_BAR,
   TASK_DELETE_SUCCESS,
-  TASK_BOARD_SUCCESS
+  TASK_BOARD_SUCCESS,
+  SET_TEXT_FILTER
 } from '../contants/teamsStore';
 
 const initialState = {
-  teams: null,
+  teams: [],
   isLoading: true,
+  searchTerm: '',
   activeTeam: {
     boards: [],
     members: []
@@ -112,6 +114,12 @@ function teamsReducer(state = initialState, action) {
           ...state.activeTeam,
           boards: action.payload.boards
         }
+      };
+
+    case SET_TEXT_FILTER:
+      return {
+        ...state,
+        searchTerm: action.payload
       };
 
     default:

@@ -1,13 +1,14 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { Container, Row, Col } from 'react-bootstrap';
 
-import { getTeams } from '../../../actions/teams';
+import { teamsSelector } from '../../../selectors/teams';
 import Team from './Team';
 import FullSpinner from '../../spinners/FullSpinner';
 import { COLOR_PRIMARY, COLOR_WHITE } from '../../../contants/styles';
+import SearchForm from './SearchForm';
 
 export const Button = styled.button`
   display: block;
@@ -70,20 +71,14 @@ const TeamsContent = styled(Container)`
 `;
 
 function TeamsContainer() {
-  const { isLoading, teams } = useSelector(state => state.teams);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (teams === null) {
-      dispatch(getTeams());
-    }
-  }, [teams, dispatch]);
+  const { isLoading, searchTerm } = useSelector(state => state.teams);
+  const teams = teamsSelector(useSelector(state => state.teams));
 
   return (
     <Fragment>
       {isLoading ? (
         <FullSpinner isLoading={isLoading} />
-      ) : teams.length === 0 ? (
+      ) : teams.length === 0 && !searchTerm ? (
         <Content>
           <H2>You need to create team* before start</H2>
           <H4>*team can have 1 member</H4>
@@ -96,7 +91,9 @@ function TeamsContainer() {
       ) : (
         <TeamsContent>
           <Row>
-            <Col md="3">Search</Col>
+            <Col md="3">
+              <SearchForm />
+            </Col>
             <Col md="9">
               <Row>
                 {teams.map(team => (

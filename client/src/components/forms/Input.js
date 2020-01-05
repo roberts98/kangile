@@ -6,6 +6,7 @@ import { COLOR_DARK } from '../../contants/styles';
 const StyledInput = styled.input`
   display: block;
   width: 300px;
+  max-width: 100%;
   border-radius: 10px;
   padding: 8px 16px;
   border: 2px solid ${COLOR_DARK};

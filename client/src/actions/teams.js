@@ -5,7 +5,8 @@ import {
   TEAM_CREATE_FAILURE,
   TEAM_CREATE_SUCCESS,
   TEAM_FETCH_FAILURE,
-  TEAM_FETCH_SUCCESS
+  TEAM_FETCH_SUCCESS,
+  SET_TEXT_FILTER
 } from '../contants/teamsStore';
 import {
   getUserTeams,
@@ -89,3 +90,8 @@ export const createTeam = (name, description) => {
     }
   };
 };
+
+export const filterTeams = phrase => ({
+  type: SET_TEXT_FILTER,
+  payload: phrase
+});
