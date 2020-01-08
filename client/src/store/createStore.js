@@ -8,6 +8,7 @@ import {
 import authReducer from '../reducers/authReducer';
 import teamsReducer from '../reducers/teamsReducer';
 import filtersReducer from '../reducers/filtersReducer';
+import socketReducer from '../reducers/socketReducer';
 
 export default () => {
   const store = createStore(
@@ -15,6 +16,7 @@ export default () => {
       auth: authReducer,
       teams: teamsReducer,
       filters: filtersReducer,
+      socket: socketReducer,
       loadingBar: loadingBarReducer
     }),
     applyMiddleware(

@@ -79,6 +79,9 @@ function Team({ data }) {
         <Link to={`/user/teams/${data._id}`}>
           <Button>See tasks</Button>
         </Link>
+        <Link to={`/user/chat/${data._id}`}>
+          <Button>Chat</Button>
+        </Link>
       </Content>
     </Col>
   );

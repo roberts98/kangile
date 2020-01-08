@@ -10,6 +10,7 @@ import Dashboard from '../pages/private/Dashboard';
 import CreateTeam from '../pages/private/CreateTeam';
 import BoardsContainer from '../components/dashboard/boards/BoardsContainer';
 import FullTask from '../components/dashboard/tasks/FullTask';
+import ChatPage from '../components/dashboard/chat/ChatPage';
 
 function PageRouter() {
   return (
@@ -25,6 +26,7 @@ function PageRouter() {
           path="/user/teams/:boardId/:taskId"
           component={FullTask}
         />
+        <PrivateRoute path="/user/chat/:teamId" component={ChatPage} />
         <PrivateRoute path="/user" component={Dashboard} />
         <PublicRoute path="/login" component={LoginPage} />
         <PublicRoute path="/" component={HomePage} />
