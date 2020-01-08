@@ -96,4 +96,29 @@ router.patch('/:id/updateTasks', auth, async (req, res) => {
   }
 });
 
+router.post('/:teamId/message', auth, async (req, res) => {
+  try {
+    const team = await Team.findById(req.params.teamId);
+
+    team.messages = [...team.messages, req.body.message];
+
+    await team.save();
+
+    res.status(200).send({ message: team.messages[team.messages.length - 1] });
+  } catch (error) {
+    console.log(error);
+    res.status(401).send();
+  }
+});
+
+router.get('/:teamId/message', auth, async (req, res) => {
+  try {
+    const team = await Team.findById(req.params.teamId);
+
+    res.status(200).send({ messages: team.messages });
+  } catch (error) {
+    res.status(401).send();
+  }
+});
+
 module.exports = router;
