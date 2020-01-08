@@ -24,6 +24,18 @@ const teamSchema = new mongoose.Schema(
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Board'
       }
+    ],
+    messages: [
+      {
+        authorId: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'User'
+        },
+        message: {
+          type: String,
+          required: true
+        }
+      }
     ]
   },
   {
