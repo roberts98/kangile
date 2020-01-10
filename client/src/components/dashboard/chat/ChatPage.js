@@ -13,9 +13,11 @@ import {
 import Layout from '../../Layout';
 import { Container } from 'react-bootstrap';
 import { Message, FormInput } from './';
+import FullSpinner from '../../spinners/FullSpinner';
 
 function ChatPage({ match }) {
   const [messages, setMessages] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const { socket, auth } = useSelector(state => state);
   const { teamId } = match.params;
 
@@ -30,11 +32,14 @@ function ChatPage({ match }) {
   useEffect(() => {
     (async function() {
       try {
+        setIsLoading(true);
         const res = await getMessagesRequest(auth.token, teamId);
         setMessages(res.data.messages);
       } catch (error) {
         console.log(error.response);
       }
+
+      setIsLoading(false);
     })();
   }, [auth.token, teamId]);
 
@@ -51,6 +56,10 @@ function ChatPage({ match }) {
         console.log(error.response);
       }
     })();
+  }
+
+  if (isLoading) {
+    return <FullSpinner />;
   }
 
   return (
