@@ -10,9 +10,11 @@ import {
   getMessagesRequest,
   postMessagesRequest
 } from '../../../services/chat.service';
+import Layout from '../../Layout';
+import { Container } from 'react-bootstrap';
+import { Message, FormInput } from './';
 
 function ChatPage({ match }) {
-  const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
   const { socket, auth } = useSelector(state => state);
   const { teamId } = match.params;
@@ -36,8 +38,7 @@ function ChatPage({ match }) {
     })();
   }, [auth.token, teamId]);
 
-  function handleSubmit(e) {
-    e.preventDefault();
+  function handleSubmit(message) {
     (async function() {
       try {
         const res = await postMessagesRequest(auth.token, teamId, {
@@ -53,14 +54,20 @@ function ChatPage({ match }) {
   }
 
   return (
-    <>
-      {messages.map(message => (
-        <div key={message._id}>{message.message}</div>
-      ))}
-      <form onSubmit={handleSubmit}>
-        <input type="text" onChange={e => setMessage(e.target.value)} />
-      </form>
-    </>
+    <Layout withNavbar>
+      <Container>
+        <div>
+          {messages.map(message => (
+            <Message
+              isAuthor={message.authorId === auth.user._id}
+              message={message}
+              key={message._id}
+            />
+          ))}
+        </div>
+        <FormInput handleSubmit={handleSubmit} />
+      </Container>
+    </Layout>
   );
 }
 
