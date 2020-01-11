@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 import { createTask } from '../../../actions/boards';
-import Input from '../../forms/Input';
-import { Button } from '../teams/TeamsContainer';
+import { Button, Input } from '../../forms';
+
 import Datepicker from './Datepicker';
 import Autocomplete from './Autocomplete';
 
