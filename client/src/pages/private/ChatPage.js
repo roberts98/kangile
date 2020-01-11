@@ -63,7 +63,7 @@ function ChatPage({ match }) {
   }
 
   return (
-    <Layout withNavbar>
+    <Layout>
       <Container>
         <div>
           {messages.map(message => (

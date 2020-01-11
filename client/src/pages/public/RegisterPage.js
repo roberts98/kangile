@@ -7,7 +7,7 @@ import { Center } from '../../components/styled/common';
 
 function LoginPage() {
   return (
-    <Layout withNavbar>
+    <Layout>
       <Container>
         <Center>
           <RegisterForm />

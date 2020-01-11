@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Container, Col, Row } from 'react-bootstrap';
 
-import Navbar from '../../components/common/navbar/Navbar';
+import Navbar from '../../components/common/navbar/NavbarPublic';
 import {
   COLOR_PRIMARY_RGB,
   COLOR_WHITE,
@@ -69,7 +69,7 @@ function HomePage() {
   return (
     <Background>
       <Overlay />
-      <Navbar color={COLOR_WHITE} />
+      <Navbar isHomePage />
       <Content>
         <Row>
           <Col md="6">

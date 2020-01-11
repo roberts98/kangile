@@ -91,7 +91,7 @@ function TeamPage({ match }) {
   }
 
   return (
-    <Layout withNavbar>
+    <Layout>
       <Container>
         <Row>
           <Col md="3">

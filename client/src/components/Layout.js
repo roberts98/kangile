@@ -1,8 +1,8 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
-import { COLOR_PRIMARY } from '../contants/styles';
-import Navbar from './common/navbar/NavbarUser';
+import { NavbarPublic, NavbarUser } from './common/navbar';
 import Header from './common/LoadingBar';
 
 const PageWrapper = styled.div`
@@ -17,11 +17,12 @@ const Main = styled.div`
   flex-grow: 1;
 `;
 
-function Layout({ children, withNavbar, blue }) {
+function Layout({ children, blue }) {
+  const { token } = useSelector(state => state.auth);
   return (
     <PageWrapper>
       <Header />
-      {withNavbar && <Navbar color={COLOR_PRIMARY} />}
+      {token ? <NavbarUser /> : <NavbarPublic />}
       <Main blue={blue}>{children}</Main>
     </PageWrapper>
   );

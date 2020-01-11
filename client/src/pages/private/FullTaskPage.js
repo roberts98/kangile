@@ -84,7 +84,7 @@ function FullTask(props) {
   }
 
   return (
-    <Layout withNavbar>
+    <Layout>
       <Container>
         <Name>{task.name}</Name>
         <StyledRow>
