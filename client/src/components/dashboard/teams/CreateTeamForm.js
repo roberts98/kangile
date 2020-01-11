@@ -2,19 +2,19 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { createTeam } from '../../../actions/teams';
-import { Input, InputGroup, Button, Label } from '../../forms';
+import { Input, InputGroup, Button, Label } from '../../styled/forms';
 
 function CreateTeamForm() {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const dispatch = useDispatch();
 
-  function handleNameChange(value) {
-    setName(value);
+  function handleNameChange(e) {
+    setName(e.target.value);
   }
 
-  function handleDescriptionChange(value) {
-    setDescription(value);
+  function handleDescriptionChange(e) {
+    setDescription(e.target.value);
   }
 
   function handleSubmit(e) {

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { filterTeams } from '../../../actions/filters';
-import { Input } from '../../forms';
+import { Input } from '../../styled/forms';
 
 function SearchForm() {
   const [phrase, setPhrase] = useState(
@@ -17,7 +17,7 @@ function SearchForm() {
 
   return (
     <Input
-      onChange={value => handleChange(value)}
+      onChange={e => handleChange(e.target.value)}
       value={phrase}
       placeholder="Search..."
     />

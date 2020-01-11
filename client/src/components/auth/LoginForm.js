@@ -4,7 +4,7 @@ import validator from 'validator';
 
 import { login } from '../../actions/auth';
 import { failureAlert } from '../alerts';
-import { Button, Input, InputGroup, Label } from '../forms';
+import { Button, Input, InputGroup, Label } from '../styled/forms';
 import { SmallSpinner } from '../spinners';
 import { COLOR_WHITE } from '../../contants/styles';
 
@@ -15,12 +15,12 @@ function LoginForm() {
   const dispatch = useDispatch();
   const { error, isLoading } = useSelector(state => state.auth);
 
-  function handleEmailChange(value) {
-    setEmail(value);
+  function handleEmailChange(e) {
+    setEmail(e.target.value);
   }
 
-  function handlePasswordChange(value) {
-    setPassword(value);
+  function handlePasswordChange(e) {
+    setPassword(e.target.value);
   }
 
   function handleFormSubmit(e) {

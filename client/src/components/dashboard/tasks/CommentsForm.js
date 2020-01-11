@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import { updateTaskRequest } from '../../../services/boards.service';
-import { Input } from '../../forms';
+import { Input } from '../../styled/forms';
 
 function CommentsForm({ handleUpdate, boardId, taskId }) {
   const [value, setValue] = useState('');
@@ -45,7 +45,7 @@ function CommentsForm({ handleUpdate, boardId, taskId }) {
       <Input
         value={value}
         placeholder="Add comment..."
-        onChange={value => handleChange(value)}
+        onChange={e => handleChange(e.target.value)}
       />
     </form>
   );

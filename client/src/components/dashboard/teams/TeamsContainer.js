@@ -6,7 +6,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 
 import { teamsSelector } from '../../../selectors/teams';
 import { Team, SearchForm } from './';
-import { Button } from '../../forms';
+import { Button } from '../../styled/forms';
 import { Center } from '../../styled/common';
 
 const ButtonWrapper = styled.div`

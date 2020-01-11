@@ -5,7 +5,7 @@ import { Draggable } from 'react-beautiful-dnd';
 
 import { deleteTask } from '../../../actions/boards';
 import { COLOR_WHITE } from '../../../contants/styles';
-import { Link } from '../../links';
+import { Link } from '../../styled/links';
 import times from '../../../assets/times.svg';
 
 const Wrapper = styled.div`

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 import { createTask } from '../../../actions/boards';
-import { Button, Input } from '../../forms';
+import { Button, Input } from '../../styled/forms';
 import { Datepicker, Autocomplete } from './';
 
 const InputGroup = styled.div`
@@ -45,7 +45,7 @@ function NewTaskForm({ boardId, handleModalClose }) {
             required
             type="text"
             placeholder="Task name"
-            onChange={value => setName(value)}
+            onChange={e => setName(e.target.value)}
           />
         </InputGroup>
         <InputGroup>
@@ -53,14 +53,14 @@ function NewTaskForm({ boardId, handleModalClose }) {
             required
             type="text"
             placeholder="Description"
-            onChange={value => setDescription(value)}
+            onChange={e => setDescription(e.target.value)}
           />
         </InputGroup>
         <InputGroup>
           <Input
             type="text"
             placeholder="Tags (split by ,)"
-            onChange={value => setTags(value)}
+            onChange={e => setTags(e.target.value)}
           />
         </InputGroup>
         <InputGroup>

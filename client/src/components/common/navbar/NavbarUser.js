@@ -7,7 +7,7 @@ import { Container } from 'react-bootstrap';
 import { logout } from '../../../actions/auth';
 import { COLOR_PRIMARY } from '../../../contants/styles';
 import { H1 } from '../../styled/headings';
-import { Link } from '../../links';
+import { Link } from '../../styled/links';
 import { UserIcon } from './';
 import plus from '../../../assets/blue_plus.svg';
 import home from '../../../assets/home.svg';

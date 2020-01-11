@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { COLOR_DARK } from '../../contants/styles';
+import { COLOR_DARK } from '../../../contants/styles';
 
 const Label = styled.label`
   font-size: 14px;

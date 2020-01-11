@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Container } from 'react-bootstrap';
 
 import { H1 } from '../../styled/headings';
-import { Link } from '../../links';
+import { Link } from '../../styled/links';
 import { COLOR_WHITE, COLOR_PRIMARY } from '../../../contants/styles';
 
 const Wrapper = styled.div`

@@ -4,7 +4,7 @@ import validator from 'validator';
 
 import { register } from '../../actions/auth';
 import { failureAlert } from '../alerts';
-import { Button, Input, InputGroup, Label } from '../forms';
+import { Button, Input, InputGroup, Label } from '../styled/forms';
 import { SmallSpinner } from '../spinners';
 import { CLEAR_ERRORS } from '../../contants/authStore';
 import { COLOR_WHITE } from '../../contants/styles';

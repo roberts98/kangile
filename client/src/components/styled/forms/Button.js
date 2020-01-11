@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { COLOR_PRIMARY, COLOR_WHITE } from '../../contants/styles';
+import { COLOR_PRIMARY, COLOR_WHITE } from '../../../contants/styles';
 
 const Button = styled.button`
   display: flex;

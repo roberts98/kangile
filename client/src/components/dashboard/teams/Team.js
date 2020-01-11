@@ -10,7 +10,7 @@ import {
   COLOR_PRIMARY,
   COLOR_GRAPHITE
 } from '../../../contants/styles';
-import { Button, InputGroup } from '../../forms';
+import { Button, InputGroup } from '../../styled/forms';
 import avatar from '../../../assets/avatar.png';
 
 const Content = styled.div`

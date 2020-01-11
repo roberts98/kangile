@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { COLOR_DARK } from '../../contants/styles';
+import { COLOR_DARK } from '../../../contants/styles';
 
 export const InputGroup = styled.div`
   margin-bottom: 13px;
