@@ -8,7 +8,11 @@ import {
   COLOR_LIGHT,
   COLOR_DARK,
   COLOR_PRIMARY,
-  COLOR_GRAPHITE
+  COLOR_GRAPHITE,
+  SMALL_SPACING,
+  FONT_DEFAULT,
+  XS_SPACING,
+  FONT_SMALL
 } from '../../../contants/styles';
 import { Button, InputGroup } from '../../styled/forms';
 import avatar from '../../../assets/avatar.png';
@@ -16,29 +20,30 @@ import avatar from '../../../assets/avatar.png';
 const Content = styled.div`
   min-height: 400px;
   background: ${COLOR_LIGHT};
-  margin-right: 15px;
+  margin-right: ${SMALL_SPACING};
+  margin-bottom: ${SMALL_SPACING};
   border-radius: 15px;
-  padding: 20px;
+  padding: ${SMALL_SPACING};
 `;
 
 const StyledH2 = styled(H2)`
   color: ${COLOR_DARK};
   font-weight: 500;
-  margin-bottom: 20px;
+  margin-bottom: ${SMALL_SPACING};
 `;
 
 const List = styled.ul`
   list-style: none;
-  font-size: 18px;
+  font-size: ${FONT_DEFAULT};
   color: ${COLOR_DARK};
   padding-left: 0;
 `;
 
 const Heading = styled.h3`
   position: relative;
-  font-size: 14px;
+  font-size: ${FONT_DEFAULT};
   font-weight: 700;
-  margin-bottom: 15px;
+  margin-bottom: ${SMALL_SPACING};
 
   &::after {
     content: '';
@@ -52,17 +57,17 @@ const Heading = styled.h3`
 `;
 
 const Username = styled.span`
-  margin-left: 10px;
+  margin-left: ${XS_SPACING};
 `;
 
 const Description = styled.p`
-  font-size: 12px;
+  font-size: ${FONT_SMALL};
   color: ${COLOR_GRAPHITE};
 `;
 
 function Team({ data }) {
   return (
-    <Col md="4">
+    <Col sm="6" lg="4">
       <Content>
         <StyledH2 color="white" align="center" title={data.name} />
         <Heading>Description</Heading>

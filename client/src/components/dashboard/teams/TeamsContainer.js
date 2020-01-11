@@ -6,11 +6,17 @@ import { Container, Row, Col } from 'react-bootstrap';
 
 import { teamsSelector } from '../../../selectors/teams';
 import { Team, SearchForm } from './';
-import { Button } from '../../styled/forms';
+import { Button, InputGroup } from '../../styled/forms';
 import { Center } from '../../styled/common';
+import {
+  BIG_SPACING,
+  XXL_SPACING,
+  SMALL_SPACING,
+  md
+} from '../../../contants/styles';
 
 const ButtonWrapper = styled.div`
-  margin-top: 32px;
+  margin-top: ${BIG_SPACING};
 
   button {
     margin: 0 auto;
@@ -26,7 +32,11 @@ const H4 = styled.h4`
 `;
 
 const TeamsContent = styled(Container)`
-  margin-top: 60px;
+  margin-top: ${SMALL_SPACING};
+
+  @media ${md} {
+    margin-top: ${XXL_SPACING};
+  }
 `;
 
 function TeamsContainer() {
@@ -51,7 +61,9 @@ function TeamsContainer() {
         <TeamsContent>
           <Row>
             <Col md="3">
-              <SearchForm />
+              <InputGroup>
+                <SearchForm />
+              </InputGroup>
             </Col>
             <Col md="9">
               <Row>

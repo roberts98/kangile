@@ -21,6 +21,8 @@ export const XL_SPACING = '48px';
 export const BIG_SPACING = '32px';
 export const MEDIUM_SPACING = '24px';
 export const SMALL_SPACING = '16px';
+export const XS_SPACING = '12px';
+export const XXS_SPACING = '8px';
 
 // Font sizes
 export const FONT_SMALL = '12px';
