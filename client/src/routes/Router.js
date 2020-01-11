@@ -1,34 +1,34 @@
 import React from 'react';
 import { Router, Switch } from 'react-router-dom';
 
-import history from './history';
-import PrivateRoute from './PrivateRoute';
-import PublicRoute from './PublicRoute';
-import LoginPage from '../pages/public/LoginPage';
-import HomePage from '../pages/public/HomePage';
-import Dashboard from '../pages/private/Dashboard';
-import CreateTeam from '../pages/private/CreateTeam';
-import BoardsContainer from '../components/dashboard/boards/BoardsContainer';
-import FullTask from '../components/dashboard/tasks/FullTask';
-import ChatPage from '../components/dashboard/chat/ChatPage';
+import { history, PrivateRoute, PublicRoute } from './';
+import { HomePage, LoginPage } from '../pages/public';
+import {
+  CreateTeamPage,
+  DashboardPage,
+  FullTaskPage,
+  ChatPage,
+  TeamPage
+} from '../pages/private';
 
 function PageRouter() {
   return (
     <Router history={history}>
       <Switch>
-        <PrivateRoute path="/user/teams/create" exact component={CreateTeam} />
         <PrivateRoute
-          path="/user/teams/:id"
+          path="/user/teams/create"
           exact
-          component={BoardsContainer}
+          component={CreateTeamPage}
         />
+        <PrivateRoute path="/user/teams/:id" exact component={TeamPage} />
         <PrivateRoute
           path="/user/teams/:boardId/:taskId"
-          component={FullTask}
+          component={FullTaskPage}
         />
         <PrivateRoute path="/user/chat/:teamId" component={ChatPage} />
-        <PrivateRoute path="/user" component={Dashboard} />
+        <PrivateRoute path="/user" component={DashboardPage} />
         <PublicRoute path="/login" component={LoginPage} />
+        {/* <PublicRoute path="/register" component={RegisterPage} /> */}
         <PublicRoute path="/" component={HomePage} />
       </Switch>
     </Router>

@@ -3,14 +3,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { Container, Row, Col } from 'react-bootstrap';
 
-import { getTeam } from '../../../actions/teams';
-import { updateTasksBoard } from '../../../actions/boards';
-import Layout from '../../Layout';
-import Board from './Board';
-import TeamSummarySidebar from '../teams/TeamSummarySidebar';
-import FullSpinner from '../../spinners/FullSpinner';
+import { getTeam } from '../../actions/teams';
+import { updateTasksBoard } from '../../actions/boards';
+import Layout from '../../components/Layout';
+import Board from '../../components/dashboard/boards/Board';
+import TeamSummarySidebar from '../../components/dashboard/teams/TeamSummarySidebar';
+import FullSpinner from '../../components/spinners/FullSpinner';
 
-function BoardsContainer({ match }) {
+function TeamPage({ match }) {
   const dispatch = useDispatch();
   const team = useSelector(state => state.teams.activeTeam);
   const [stateBoards, setStateBoards] = useState(team.boards);
@@ -117,4 +117,4 @@ function BoardsContainer({ match }) {
   );
 }
 
-export default BoardsContainer;
+export default TeamPage;

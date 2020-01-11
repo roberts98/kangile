@@ -4,13 +4,13 @@ import styled from 'styled-components';
 import moment from 'moment';
 import { Container, Row, Col } from 'react-bootstrap';
 
-import { getTaskRequest } from '../../../services/boards.service';
-import Layout from '../../Layout';
-import FullSpinner from '../../spinners/FullSpinner';
-import { COLOR_PRIMARY, COLOR_WHITE } from '../../../contants/styles';
-import avatar from '../../../assets/avatar.png';
-import CommentsForm from './CommentsForm';
-import Comment from './Comment';
+import { getTaskRequest } from '../../services/boards.service';
+import Layout from '../../components/Layout';
+import FullSpinner from '../../components/spinners/FullSpinner';
+import { COLOR_PRIMARY, COLOR_WHITE } from '../../contants/styles';
+import avatar from '../../assets/avatar.png';
+import CommentsForm from '../../components/dashboard/tasks/CommentsForm';
+import Comment from '../../components/dashboard/tasks/Comment';
 
 const StyledRow = styled(Row)`
   justify-content: space-between;

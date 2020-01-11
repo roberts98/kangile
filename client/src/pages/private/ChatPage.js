@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { Container } from 'react-bootstrap';
 
 import {
   CONNECTED,
   MESSAGE_RECEIVED,
   MESSAGE_SENT
-} from '../../../contants/sockets';
+} from '../../contants/sockets';
 import {
   getMessagesRequest,
   postMessagesRequest
-} from '../../../services/chat.service';
-import Layout from '../../Layout';
-import { Container } from 'react-bootstrap';
-import { Message, FormInput } from './';
-import FullSpinner from '../../spinners/FullSpinner';
+} from '../../services/chat.service';
+import Layout from '../../components/Layout';
+import { Message, FormInput } from '../../components/dashboard/chat';
+import FullSpinner from '../../components/spinners/FullSpinner';
 
 function ChatPage({ match }) {
   const [messages, setMessages] = useState([]);
