@@ -7,7 +7,13 @@ import { NavbarPublic } from '../../components/common/navbar';
 import {
   COLOR_PRIMARY_RGB,
   COLOR_WHITE,
-  COLOR_PRIMARY
+  COLOR_PRIMARY,
+  sm,
+  xl,
+  BIG_SPACING,
+  FONT_HUGE,
+  FONT_XXL,
+  FONT_BIG
 } from '../../contants/styles';
 import bg from '../../assets/bg.png';
 
@@ -27,19 +33,35 @@ const Overlay = styled.div`
 `;
 
 const Content = styled(Container)`
-  margin-top: 100px;
+  margin-top: ${BIG_SPACING};
 `;
 
 const BigText = styled.h1`
   color: ${COLOR_WHITE};
-  font-size: 100px;
   font-weight: 700;
+  font-size: ${FONT_HUGE};
+
+  @media ${sm} {
+    font-size: ${FONT_XXL};
+  }
+
+  @media ${xl} {
+    font-size: 100px;
+  }
 `;
 
 const Text = styled.h3`
   color: ${COLOR_WHITE};
-  font-size: 48px;
   font-weight: 500;
+  font-size: ${FONT_BIG};
+
+  @media ${sm} {
+    font-size: ${FONT_HUGE};
+  }
+
+  @media ${xl} {
+    font-size: ${FONT_XXL};
+  }
 `;
 
 const Button = styled(Link)`
