@@ -19,7 +19,6 @@ const Wrapper = styled.div`
 `;
 
 function Message({ message, isAuthor }) {
-  console.log(isAuthor);
   return <Wrapper isAuthor={isAuthor}>{message.message}</Wrapper>;
 }
 

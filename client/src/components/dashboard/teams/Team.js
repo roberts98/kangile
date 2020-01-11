@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Col } from 'react-bootstrap';
 
@@ -76,13 +77,13 @@ function Team({ data }) {
           ))}
         </List>
         <InputGroup>
-          <Button wide to={`/user/teams/${data._id}`}>
-            See tasks
+          <Button wide>
+            <Link to={`/user/teams/${data._id}`}>See tasks</Link>
           </Button>
         </InputGroup>
         <InputGroup>
-          <Button wide to={`/user/chat/${data._id}`}>
-            Chat
+          <Button wide>
+            <Link to={`/user/chat/${data._id}`}>Chat</Link>
           </Button>
         </InputGroup>
       </Content>

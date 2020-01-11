@@ -36,7 +36,9 @@ function CreateTeamForm() {
           id="team-description"
         />
       </InputGroup>
-      <Button type="submit">Create team</Button>
+      <Button wide type="submit">
+        Create team
+      </Button>
     </form>
   );
 }
