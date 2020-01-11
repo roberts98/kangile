@@ -3,14 +3,13 @@ import styled from 'styled-components';
 import { Col } from 'react-bootstrap';
 
 import H2 from '../../headers/H2';
-import Link from '../../links/Link';
 import {
   COLOR_LIGHT,
   COLOR_DARK,
   COLOR_PRIMARY,
   COLOR_GRAPHITE
 } from '../../../contants/styles';
-import { Button } from './TeamsContainer';
+import { Button, InputGroup } from '../../forms';
 import avatar from '../../../assets/avatar.png';
 
 const Content = styled.div`
@@ -76,12 +75,16 @@ function Team({ data }) {
             </li>
           ))}
         </List>
-        <Link to={`/user/teams/${data._id}`}>
-          <Button>See tasks</Button>
-        </Link>
-        <Link to={`/user/chat/${data._id}`}>
-          <Button>Chat</Button>
-        </Link>
+        <InputGroup>
+          <Button wide to={`/user/teams/${data._id}`}>
+            See tasks
+          </Button>
+        </InputGroup>
+        <InputGroup>
+          <Button wide to={`/user/chat/${data._id}`}>
+            Chat
+          </Button>
+        </InputGroup>
       </Content>
     </Col>
   );
