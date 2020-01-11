@@ -2,7 +2,7 @@ import React from 'react';
 import { Router, Switch } from 'react-router-dom';
 
 import { history, PrivateRoute, PublicRoute } from './';
-import { HomePage, LoginPage } from '../pages/public';
+import { HomePage, LoginPage, RegisterPage } from '../pages/public';
 import {
   CreateTeamPage,
   DashboardPage,
@@ -28,7 +28,7 @@ function PageRouter() {
         <PrivateRoute path="/user/chat/:teamId" component={ChatPage} />
         <PrivateRoute path="/user" component={DashboardPage} />
         <PublicRoute path="/login" component={LoginPage} />
-        {/* <PublicRoute path="/register" component={RegisterPage} /> */}
+        <PublicRoute path="/register" component={RegisterPage} />
         <PublicRoute path="/" component={HomePage} />
       </Switch>
     </Router>

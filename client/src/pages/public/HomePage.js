@@ -80,7 +80,7 @@ function HomePage() {
               Kangile is a place that will allow you to separate and organize
               all tasks in an easy and accessible way.
             </Text>
-            <Button to="/login">See More</Button>
+            <Button to="/register">See More</Button>
           </Col>
         </Row>
       </Content>

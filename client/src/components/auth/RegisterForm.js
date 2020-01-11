@@ -4,8 +4,7 @@ import validator from 'validator';
 
 import { register } from '../../actions/auth';
 import failureAlert from '../alerts/failureAlert';
-import Input from '../forms/Input';
-import Button from '../forms/Button';
+import { Button, Input, InputGroup, Label } from '../forms';
 import SmallSpinner from '../spinners/SmallSpinner';
 import { CLEAR_ERRORS } from '../../contants/authStore';
 
@@ -71,33 +70,42 @@ function RegisterForm() {
   return (
     <Fragment>
       <form onSubmit={handleFormSubmit}>
-        <Input
-          onChange={handleUsernameChange}
-          type="text"
-          placeholder="username"
-          value={username}
-        />
-        <Input
-          onChange={handleEmailChange}
-          value={email}
-          type="email"
-          placeholder="email"
-        />
-        <Input
-          onChange={handlePasswordChange}
-          type="password"
-          placeholder="password"
-          value={password}
-        />
+        <InputGroup>
+          <Label htmlFor="username">Username</Label>
+          <Input
+            onChange={handleUsernameChange}
+            type="text"
+            placeholder="username"
+            value={username}
+            id="username"
+          />
+        </InputGroup>
+        <InputGroup>
+          <Label htmlFor="email">Email</Label>
+          <Input
+            onChange={handleEmailChange}
+            value={email}
+            type="email"
+            placeholder="email"
+            id="email"
+          />
+        </InputGroup>
+        <InputGroup>
+          <Label htmlFor="password">Password</Label>
+          <Input
+            onChange={handlePasswordChange}
+            type="password"
+            placeholder="password"
+            value={password}
+            id="password"
+          />
+        </InputGroup>
         {authStore.isLoading ? (
           <SmallSpinner />
         ) : (
-          <Button
-            margin="10px 0 0 0"
-            value="Register"
-            type="submit"
-            variant="inverted"
-          />
+          <Button wide type="submit">
+            Register
+          </Button>
         )}
       </form>
     </Fragment>
