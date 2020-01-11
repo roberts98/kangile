@@ -4,7 +4,7 @@ import { createGlobalStyle } from 'styled-components';
 import { ToastContainer } from 'react-toastify';
 
 import { getTeams } from './actions/teams';
-import Router from './routes/Router';
+import { Router } from './routes';
 
 const GlobalStyles = createGlobalStyle`
   body {

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Col } from 'react-bootstrap';
 
-import H2 from '../../headers/H2';
+import { H2 } from '../../styled/headings';
 import {
   COLOR_LIGHT,
   COLOR_DARK,

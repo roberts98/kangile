@@ -1,19 +1,13 @@
 import React from 'react';
-import styled from 'styled-components';
 import ClipLoader from 'react-spinners/ClipLoader';
 
-const StyledDiv = styled.div`
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-`;
+import { Center } from '../styled/common';
 
 function FullSpinner({ isLoading }) {
   return (
-    <StyledDiv>
+    <Center>
       <ClipLoader sizeUnit="px" size={30} loading={isLoading} />
-    </StyledDiv>
+    </Center>
   );
 }
 export default FullSpinner;

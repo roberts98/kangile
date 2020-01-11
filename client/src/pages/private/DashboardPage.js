@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import Layout from '../../components/Layout';
-import TeamsContainer from '../../components/dashboard/teams/TeamsContainer';
 import { getTeams } from '../../actions/teams';
-import FullSpinner from '../../components/spinners/FullSpinner';
+import Layout from '../../components/Layout';
+import { TeamsContainer } from '../../components/dashboard/teams/';
+import { FullSpinner } from '../../components/spinners/';
 
 function Dashboard() {
   const dispatch = useDispatch();

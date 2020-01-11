@@ -6,9 +6,9 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { getTeam } from '../../actions/teams';
 import { updateTasksBoard } from '../../actions/boards';
 import Layout from '../../components/Layout';
-import Board from '../../components/dashboard/boards/Board';
-import TeamSummarySidebar from '../../components/dashboard/teams/TeamSummarySidebar';
-import FullSpinner from '../../components/spinners/FullSpinner';
+import { Board } from '../../components/dashboard/boards';
+import { TeamSummarySidebar } from '../../components/dashboard/teams/';
+import { FullSpinner } from '../../components/spinners';
 
 function TeamPage({ match }) {
   const dispatch = useDispatch();

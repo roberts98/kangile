@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import validator from 'validator';
 
 import { login } from '../../actions/auth';
-import failureAlert from '../alerts/failureAlert';
+import { failureAlert } from '../alerts';
 import { Button, Input, InputGroup, Label } from '../forms';
-import SmallSpinner from '../spinners/SmallSpinner';
+import { SmallSpinner } from '../spinners';
 import { COLOR_WHITE } from '../../contants/styles';
 
 function LoginForm() {

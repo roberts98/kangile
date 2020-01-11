@@ -3,15 +3,14 @@ import styled from 'styled-components';
 import { Col } from 'react-bootstrap';
 import { Droppable } from 'react-beautiful-dnd';
 
-import Modal from '../../modals/Modal';
+import { Modal } from '../../modals';
 import {
   COLOR_DARK,
   COLOR_LIGHT,
   COLOR_PRIMARY
 } from '../../../contants/styles';
+import { NewTaskForm, DraggableTask } from '../tasks';
 import plus from '../../../assets/blue_plus.svg';
-import NewTaskForm from '../tasks/NewTaskForm';
-import Task from '../tasks/DraggableTask';
 
 const StyledDiv = styled.div`
   background-color: ${COLOR_LIGHT};
@@ -72,7 +71,12 @@ function Board({ board, index, id }) {
           {provided => (
             <TaskList ref={provided.innerRef} {...provided.droppableProps}>
               {board.tasks.map((task, i) => (
-                <Task boardId={id} key={task._id} index={i} task={task} />
+                <DraggableTask
+                  boardId={id}
+                  key={task._id}
+                  index={i}
+                  task={task}
+                />
               ))}
               {provided.placeholder}
             </TaskList>

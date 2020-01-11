@@ -1,7 +1,7 @@
 import React from 'react';
 import LoadingBar from 'react-redux-loading-bar';
 
-import { COLOR_PRIMARY } from '../../contants/styles';
+import { COLOR_PRIMARY } from '../../../contants/styles';
 
 function Bar() {
   return (

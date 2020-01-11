@@ -5,8 +5,8 @@ import { Draggable } from 'react-beautiful-dnd';
 
 import { deleteTask } from '../../../actions/boards';
 import { COLOR_WHITE } from '../../../contants/styles';
+import { Link } from '../../links';
 import times from '../../../assets/times.svg';
-import StyledLink from '../../links/Link';
 
 const Wrapper = styled.div`
   background-color: ${COLOR_WHITE};
@@ -46,9 +46,9 @@ function Task({ task, boardId, index }) {
           {...provided.draggableProps}
           ref={provided.innerRef}
         >
-          <StyledLink to={`/user/teams/${boardId}/${task._id}`}>
+          <Link to={`/user/teams/${boardId}/${task._id}`}>
             <Name>{task.name}</Name>
-          </StyledLink>
+          </Link>
           <RemoveIcon onClick={handleRemoveClick} />
         </Wrapper>
       )}

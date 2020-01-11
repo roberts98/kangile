@@ -1,16 +1,16 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link as RRLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { Container } from 'react-bootstrap';
 
 import { logout } from '../../../actions/auth';
-import H1 from '../../headers/H1';
-import StyledLink from '../../links/Link';
 import { COLOR_PRIMARY } from '../../../contants/styles';
+import { H1 } from '../../styled/headings';
+import { Link } from '../../links';
+import { UserIcon } from './';
 import plus from '../../../assets/blue_plus.svg';
 import home from '../../../assets/home.svg';
-import UserIcon from './UserIcon';
 
 const Inner = styled.div`
   display: flex;
@@ -25,7 +25,7 @@ const Right = styled.div`
   align-items: center;
 `;
 
-const Icon = styled(Link)`
+const Icon = styled(RRLink)`
   display: block;
   width: 35px;
   height: 35px;
@@ -48,9 +48,9 @@ function NavbarUser() {
   return (
     <Container>
       <Inner>
-        <StyledLink to="/">
-          <H1 color={COLOR_PRIMARY} title="KANGILE" />
-        </StyledLink>
+        <Link to="/">
+          <H1 color={COLOR_PRIMARY}>KANGILE</H1>
+        </Link>
         <Right>
           <Icon to="/user/teams/create" bg={plus} />
           <Icon to="/" bg={home} />

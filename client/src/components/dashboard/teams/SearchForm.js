@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { filterTeams } from '../../../actions/filters';
-import Input from '../../forms/Input';
+import { Input } from '../../forms';
 
 function SearchForm() {
   const [phrase, setPhrase] = useState(

@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { Container } from 'react-bootstrap';
 
-import H1 from '../../headers/H1';
-import StyledLink from '../../links/Link';
+import { H1 } from '../../styled/headings';
+import { Link } from '../../links';
 import { COLOR_WHITE, COLOR_PRIMARY } from '../../../contants/styles';
 
 const Wrapper = styled.div`
@@ -30,10 +30,10 @@ function Navbar({ isHomePage }) {
     <Wrapper>
       <Container>
         <Inner isHomePage={isHomePage}>
-          <StyledLink to="/">
-            <H1 title="KANGILE" />
-          </StyledLink>
-          <StyledLink to="/login">Log In</StyledLink>
+          <Link to="/">
+            <H1>KANGILE</H1>
+          </Link>
+          <Link to="/login">Log In</Link>
         </Inner>
       </Container>
     </Wrapper>

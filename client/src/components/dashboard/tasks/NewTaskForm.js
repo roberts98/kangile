@@ -4,9 +4,7 @@ import styled from 'styled-components';
 
 import { createTask } from '../../../actions/boards';
 import { Button, Input } from '../../forms';
-
-import Datepicker from './Datepicker';
-import Autocomplete from './Autocomplete';
+import { Datepicker, Autocomplete } from './';
 
 const InputGroup = styled.div`
   margin-bottom: 13px;

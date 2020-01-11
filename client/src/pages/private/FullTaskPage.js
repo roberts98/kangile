@@ -6,11 +6,10 @@ import { Container, Row, Col } from 'react-bootstrap';
 
 import { getTaskRequest } from '../../services/boards.service';
 import Layout from '../../components/Layout';
-import FullSpinner from '../../components/spinners/FullSpinner';
+import { FullSpinner } from '../../components/spinners';
+import { CommentsForm, Comment } from '../../components/dashboard/tasks';
 import { COLOR_PRIMARY, COLOR_WHITE } from '../../contants/styles';
 import avatar from '../../assets/avatar.png';
-import CommentsForm from '../../components/dashboard/tasks/CommentsForm';
-import Comment from '../../components/dashboard/tasks/Comment';
 
 const StyledRow = styled(Row)`
   justify-content: space-between;

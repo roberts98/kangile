@@ -5,10 +5,12 @@ import {
   loadingBarMiddleware
 } from 'react-redux-loading-bar';
 
-import authReducer from '../reducers/authReducer';
-import teamsReducer from '../reducers/teamsReducer';
-import filtersReducer from '../reducers/filtersReducer';
-import socketReducer from '../reducers/socketReducer';
+import {
+  authReducer,
+  teamsReducer,
+  filtersReducer,
+  socketReducer
+} from '../reducers';
 
 export default () => {
   const store = createStore(

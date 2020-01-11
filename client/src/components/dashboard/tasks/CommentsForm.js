@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import { updateTaskRequest } from '../../../services/boards.service';
-import Input from '../../forms/Input';
+import { Input } from '../../forms';
 
 function CommentsForm({ handleUpdate, boardId, taskId }) {
   const [value, setValue] = useState('');

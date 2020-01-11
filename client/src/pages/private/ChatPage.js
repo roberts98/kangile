@@ -13,7 +13,7 @@ import {
 } from '../../services/chat.service';
 import Layout from '../../components/Layout';
 import { Message, FormInput } from '../../components/dashboard/chat';
-import FullSpinner from '../../components/spinners/FullSpinner';
+import { FullSpinner } from '../../components/spinners';
 
 function ChatPage({ match }) {
   const [messages, setMessages] = useState([]);
