@@ -4,8 +4,7 @@ import validator from 'validator';
 
 import { login } from '../../actions/auth';
 import failureAlert from '../alerts/failureAlert';
-import Input from '../forms/Input';
-import Button from '../forms/Button';
+import { Button, Input, InputGroup, Label } from '../forms';
 import SmallSpinner from '../spinners/SmallSpinner';
 
 function LoginForm() {
@@ -56,27 +55,30 @@ function LoginForm() {
   return (
     <Fragment>
       <form onSubmit={handleFormSubmit}>
-        <Input
-          onChange={handleEmailChange}
-          value={email}
-          type="email"
-          placeholder="email"
-        />
-        <Input
-          onChange={handlePasswordChange}
-          type="password"
-          placeholder="password"
-          value={password}
-        />
+        <InputGroup>
+          <Label htmlFor="email">Email</Label>
+          <Input
+            onChange={handleEmailChange}
+            value={email}
+            type="email"
+            id="email"
+          />
+        </InputGroup>
+        <InputGroup>
+          <Label htmlFor="password">Password</Label>
+          <Input
+            onChange={handlePasswordChange}
+            type="password"
+            value={password}
+            id="password"
+          />
+        </InputGroup>
         {authStore.isLoading ? (
           <SmallSpinner />
         ) : (
-          <Button
-            margin="10px 0 0 0"
-            value="Login"
-            type="submit"
-            variant="primary"
-          />
+          <Button wide type="submit">
+            Log In
+          </Button>
         )}
       </form>
     </Fragment>
