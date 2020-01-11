@@ -6,13 +6,14 @@ import { login } from '../../actions/auth';
 import failureAlert from '../alerts/failureAlert';
 import { Button, Input, InputGroup, Label } from '../forms';
 import SmallSpinner from '../spinners/SmallSpinner';
+import { COLOR_WHITE } from '../../contants/styles';
 
 function LoginForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
   const dispatch = useDispatch();
-  const authStore = useSelector(state => state.auth);
+  const { error, isLoading } = useSelector(state => state.auth);
 
   function handleEmailChange(value) {
     setEmail(value);
@@ -47,10 +48,10 @@ function LoginForm() {
 
   useEffect(() => {
     errors.map(error => failureAlert(error));
-    if (authStore.error) {
-      failureAlert(authStore.error);
+    if (error) {
+      failureAlert(error);
     }
-  }, [errors, authStore.error]);
+  }, [errors, error]);
 
   return (
     <Fragment>
@@ -73,13 +74,13 @@ function LoginForm() {
             id="password"
           />
         </InputGroup>
-        {authStore.isLoading ? (
-          <SmallSpinner />
-        ) : (
-          <Button wide type="submit">
-            Log In
-          </Button>
-        )}
+        <Button wide type="submit">
+          {isLoading ? (
+            <SmallSpinner size={18} color={COLOR_WHITE} />
+          ) : (
+            'Log In'
+          )}
+        </Button>
       </form>
     </Fragment>
   );

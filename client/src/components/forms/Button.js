@@ -3,7 +3,9 @@ import styled from 'styled-components';
 import { COLOR_PRIMARY, COLOR_WHITE } from '../../contants/styles';
 
 const Button = styled.button`
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: ${COLOR_PRIMARY};
   color: ${COLOR_WHITE};
   font-size: ${props => (props.big ? '24px' : '12px')};

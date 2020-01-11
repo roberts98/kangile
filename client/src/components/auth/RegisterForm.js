@@ -7,6 +7,7 @@ import failureAlert from '../alerts/failureAlert';
 import { Button, Input, InputGroup, Label } from '../forms';
 import SmallSpinner from '../spinners/SmallSpinner';
 import { CLEAR_ERRORS } from '../../contants/authStore';
+import { COLOR_WHITE } from '../../contants/styles';
 
 function RegisterForm() {
   const [username, setUsername] = useState('');
@@ -14,7 +15,7 @@ function RegisterForm() {
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
   const dispatch = useDispatch();
-  const authStore = useSelector(state => state.auth);
+  const { error, isLoading } = useSelector(state => state.auth);
 
   function handleUsernameChange(value) {
     setUsername(value);
@@ -58,14 +59,14 @@ function RegisterForm() {
 
   useEffect(() => {
     errors.map(error => failureAlert(error));
-    if (authStore.error) {
-      failureAlert(authStore.error);
+    if (error) {
+      failureAlert(error);
     }
 
     return () => {
       dispatch({ type: CLEAR_ERRORS });
     };
-  }, [errors, authStore.error, dispatch]);
+  }, [errors, error, dispatch]);
 
   return (
     <Fragment>
@@ -100,13 +101,13 @@ function RegisterForm() {
             id="password"
           />
         </InputGroup>
-        {authStore.isLoading ? (
-          <SmallSpinner />
-        ) : (
-          <Button wide type="submit">
-            Register
-          </Button>
-        )}
+        <Button wide type="submit">
+          {isLoading ? (
+            <SmallSpinner size="18" color={COLOR_WHITE} />
+          ) : (
+            'Register'
+          )}
+        </Button>
       </form>
     </Fragment>
   );

@@ -13,7 +13,7 @@ const server = http.createServer(app);
 const socket = new Socket(server);
 const port = process.env.PORT || 3001;
 
-// app.use(timeoutMiddleware);
+app.use(timeoutMiddleware);
 app.use(express.json());
 app.use('/users', userRouter);
 app.use('/teams', teamRouter);
