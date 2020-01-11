@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { DragDropContext } from 'react-beautiful-dnd';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 
 import { getTeam } from '../../actions/teams';
 import { updateTasksBoard } from '../../actions/boards';
@@ -9,6 +9,7 @@ import Layout from '../../components/Layout';
 import { Board } from '../../components/dashboard/boards';
 import { TeamSummarySidebar } from '../../components/dashboard/teams/';
 import { FullSpinner } from '../../components/spinners';
+import { TopSpacer } from '../../components/styled/common';
 
 function TeamPage({ match }) {
   const dispatch = useDispatch();
@@ -92,12 +93,12 @@ function TeamPage({ match }) {
 
   return (
     <Layout>
-      <Container>
+      <TopSpacer>
         <Row>
-          <Col md="3">
+          <Col lg="3">
             <TeamSummarySidebar team={team} />
           </Col>
-          <Col md="9">
+          <Col lg="9">
             <Row>
               <DragDropContext onDragEnd={handleDragEnd}>
                 {stateBoards.map((board, index) => (
@@ -112,7 +113,7 @@ function TeamPage({ match }) {
             </Row>
           </Col>
         </Row>
-      </Container>
+      </TopSpacer>
     </Layout>
   );
 }

@@ -7,7 +7,11 @@ import { Modal } from '../../modals';
 import {
   COLOR_DARK,
   COLOR_LIGHT,
-  COLOR_PRIMARY
+  COLOR_PRIMARY,
+  FONT_DEFAULT,
+  FONT_BIG,
+  SMALL_SPACING,
+  MEDIUM_SPACING
 } from '../../../contants/styles';
 import { NewTaskForm, DraggableTask } from '../tasks';
 import plus from '../../../assets/blue_plus.svg';
@@ -17,25 +21,29 @@ const StyledDiv = styled.div`
   opacity: ${props => (props.isDragging ? 0 : 1)};
   cursor: move;
   border-radius: 15px;
-  padding: 20px;
+  padding: ${SMALL_SPACING};
+`;
+
+const Column = styled(Col)`
+  margin-bottom: ${SMALL_SPACING};
 `;
 
 const Name = styled.h2`
-  font-size: 36px;
+  font-size: ${FONT_BIG};
   font-weight: 700;
   color: ${COLOR_DARK};
-  margin-bottom: 30px;
+  margin-bottom: ${MEDIUM_SPACING};
   text-align: center;
 `;
 
 const StyledLink = styled.p`
-  font-size: 24px;
+  font-size: ${FONT_DEFAULT};
   color: ${COLOR_PRIMARY};
   font-weight: 500;
   cursor: pointer;
   display: flex;
   align-items: center;
-  margin-top: 15px;
+  margin-top: ${SMALL_SPACING};
 
   &::before {
     content: '';
@@ -50,8 +58,6 @@ const StyledLink = styled.p`
   }
 `;
 
-const TaskList = styled.div``;
-
 function Board({ board, index, id }) {
   const [isAddingNewTask, setIsAddingNewTask] = useState(false);
 
@@ -64,12 +70,12 @@ function Board({ board, index, id }) {
   }
 
   return (
-    <Col md="4">
+    <Column md="4">
       <StyledDiv className="box">
         <Name>{board.name}</Name>
         <Droppable droppableId={id}>
           {provided => (
-            <TaskList ref={provided.innerRef} {...provided.droppableProps}>
+            <div ref={provided.innerRef} {...provided.droppableProps}>
               {board.tasks.map((task, i) => (
                 <DraggableTask
                   boardId={id}
@@ -79,7 +85,7 @@ function Board({ board, index, id }) {
                 />
               ))}
               {provided.placeholder}
-            </TaskList>
+            </div>
           )}
         </Droppable>
         <StyledLink onClick={handleClick}>Add task</StyledLink>
@@ -87,7 +93,7 @@ function Board({ board, index, id }) {
           <NewTaskForm handleModalClose={handleModalClose} boardId={id} />
         </Modal>
       </StyledDiv>
-    </Col>
+    </Column>
   );
 }
 
