@@ -5,19 +5,35 @@ import styled from 'styled-components';
 import { Container } from 'react-bootstrap';
 
 import { logout } from '../../../actions/auth';
-import { COLOR_PRIMARY } from '../../../contants/styles';
 import { H1 } from '../../styled/headings';
 import { Link } from '../../styled/links';
 import { UserIcon } from './';
+import {
+  COLOR_PRIMARY,
+  XXL_SPACING,
+  MEDIUM_SPACING,
+  SMALL_SPACING,
+  sm,
+  xs
+} from '../../../contants/styles';
 import plus from '../../../assets/blue_plus.svg';
 import home from '../../../assets/home.svg';
 
 const Inner = styled.div`
-  display: flex;
-  justify-content: space-between;
-  height: 92px;
-  padding: 25px 0;
+  padding: ${MEDIUM_SPACING} 0;
   border-bottom: 2px solid ${COLOR_PRIMARY};
+
+  @media ${xs} {
+    h1 {
+      margin-bottom: ${SMALL_SPACING};
+    }
+  }
+
+  @media ${sm} {
+    display: flex;
+    justify-content: space-between;
+    height: 92px;
+  }
 `;
 
 const Right = styled.div`
@@ -32,7 +48,7 @@ const Icon = styled(RRLink)`
   background-image: url(${props => props.bg});
   background-size: contain;
   background-repeat: no-repeat;
-  margin-right: 70px;
+  margin-right: ${XXL_SPACING};
 `;
 
 function NavbarUser() {

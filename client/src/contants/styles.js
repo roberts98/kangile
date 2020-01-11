@@ -16,6 +16,8 @@ export const xl = '(min-width: 1200px)';
 export const xxl = '(min-width: 1500px)';
 
 // Spacings
+export const XXL_SPACING = '64px';
+export const XL_SPACING = '48px';
 export const BIG_SPACING = '32px';
 export const MEDIUM_SPACING = '24px';
 export const SMALL_SPACING = '16px';
