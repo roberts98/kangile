@@ -5,9 +5,10 @@ import styled from 'styled-components';
 import { createTask } from '../../../actions/boards';
 import { Button, Input } from '../../styled/forms';
 import { Datepicker, Autocomplete } from './';
+import { SMALL_SPACING } from '../../../contants/styles';
 
 const InputGroup = styled.div`
-  margin-bottom: 13px;
+  margin-bottom: ${SMALL_SPACING};
 `;
 
 function NewTaskForm({ boardId, handleModalClose }) {

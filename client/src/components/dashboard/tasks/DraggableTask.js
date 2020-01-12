@@ -4,23 +4,30 @@ import styled from 'styled-components';
 import { Draggable } from 'react-beautiful-dnd';
 
 import { deleteTask } from '../../../actions/boards';
-import { COLOR_WHITE } from '../../../contants/styles';
+import {
+  COLOR_WHITE,
+  FONT_MEDIUM,
+  BIG_SPACING,
+  XS_SPACING,
+  SMALL_SPACING
+} from '../../../contants/styles';
 import { Link } from '../../styled/links';
 import times from '../../../assets/times.svg';
 
 const Wrapper = styled.div`
   background-color: ${COLOR_WHITE};
   border-radius: 10px;
-  padding: 20px 40px 20px 10px;
+  padding: ${SMALL_SPACING} ${BIG_SPACING} ${SMALL_SPACING} ${XS_SPACING};
   position: relative;
-  margin-bottom: 20px;
+  margin-bottom: ${SMALL_SPACING};
 `;
 
 const RemoveIcon = styled.span`
   background: url(${times});
   background-repeat: no-repeat;
-  width: 25px;
-  height: 25px;
+  background-size: contain;
+  width: 16px;
+  height: 16px;
   position: absolute;
   right: 10px;
   top: 10px;
@@ -28,7 +35,7 @@ const RemoveIcon = styled.span`
 `;
 
 const Name = styled.h3`
-  font-size: 18px;
+  font-size: ${FONT_MEDIUM};
 `;
 
 function Task({ task, boardId, index }) {

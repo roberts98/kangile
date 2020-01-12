@@ -1,6 +1,13 @@
 import styled from 'styled-components';
 
-import { COLOR_PRIMARY, COLOR_WHITE } from '../../../contants/styles';
+import {
+  COLOR_PRIMARY,
+  COLOR_WHITE,
+  FONT_BIG,
+  FONT_SMALL,
+  XXS_SPACING,
+  XS_SPACING
+} from '../../../contants/styles';
 
 const Button = styled.button`
   display: flex;
@@ -8,10 +15,10 @@ const Button = styled.button`
   justify-content: center;
   background-color: ${COLOR_PRIMARY};
   color: ${COLOR_WHITE};
-  font-size: ${props => (props.big ? '24px' : '12px')};
+  font-size: ${props => (props.big ? FONT_BIG : FONT_SMALL)};
   font-weight: 700;
   text-align: center;
-  padding: 8px 10px;
+  padding: ${XXS_SPACING} ${XS_SPACING};
   border-radius: 10px;
   border: 2px solid transparent;
   text-transform: uppercase;

@@ -1,9 +1,13 @@
 import styled from 'styled-components';
 
-import { COLOR_DARK } from '../../../contants/styles';
+import {
+  COLOR_DARK,
+  SMALL_SPACING,
+  XXS_SPACING
+} from '../../../contants/styles';
 
 export const InputGroup = styled.div`
-  margin-bottom: 13px;
+  margin-bottom: ${SMALL_SPACING};
 `;
 
 const Input = styled.input`
@@ -11,7 +15,7 @@ const Input = styled.input`
   width: 300px;
   max-width: 100%;
   border-radius: 10px;
-  padding: 8px 16px;
+  padding: ${XXS_SPACING} ${SMALL_SPACING};
   border: 2px solid ${COLOR_DARK};
 `;
 

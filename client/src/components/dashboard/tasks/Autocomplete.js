@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import AutoComplete from 'react-autocomplete';
 
-import { COLOR_DARK } from '../../../contants/styles';
+import { COLOR_DARK, XXS_SPACING, XS_SPACING } from '../../../contants/styles';
 
 const styles = {
   display: 'block',
@@ -13,7 +13,7 @@ const styles = {
 };
 
 const Menu = styled.div`
-  padding: 5px 10px;
+  padding: ${XXS_SPACING} ${XS_SPACING};
   border-bottom: 2px solid ${COLOR_DARK};
 `;
 
