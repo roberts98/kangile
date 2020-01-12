@@ -11,7 +11,6 @@ import {
   FONT_DEFAULT,
   FONT_BIG,
   SMALL_SPACING,
-  MEDIUM_SPACING,
   XXS_SPACING
 } from '../../../contants/styles';
 import { NewTaskForm, DraggableTask } from '../tasks';
