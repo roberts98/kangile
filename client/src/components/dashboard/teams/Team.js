@@ -12,7 +12,8 @@ import {
   SMALL_SPACING,
   FONT_DEFAULT,
   XS_SPACING,
-  FONT_SMALL
+  FONT_SMALL,
+  FONT_HUGE
 } from '../../../contants/styles';
 import { Button, InputGroup } from '../../styled/forms';
 import avatar from '../../../assets/avatar.png';
@@ -30,6 +31,8 @@ const StyledH2 = styled(H2)`
   color: ${COLOR_DARK};
   font-weight: 500;
   margin-bottom: ${SMALL_SPACING};
+  text-align: center;
+  font-size: ${FONT_HUGE};
 `;
 
 const List = styled.ul`
@@ -69,7 +72,7 @@ function Team({ data }) {
   return (
     <Col sm="6" lg="4">
       <Content>
-        <StyledH2 color="white" align="center" title={data.name} />
+        <StyledH2>{data.name}</StyledH2>
         <Heading>Description</Heading>
         <Description>{data.description}</Description>
         <Heading>Members</Heading>
