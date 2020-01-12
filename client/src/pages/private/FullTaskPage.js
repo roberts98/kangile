@@ -2,53 +2,63 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import moment from 'moment';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 
 import { getTaskRequest } from '../../services/boards.service';
 import Layout from '../../components/Layout';
 import { FullSpinner } from '../../components/spinners';
 import { CommentsForm, Comment } from '../../components/dashboard/tasks';
-import { COLOR_PRIMARY, COLOR_WHITE } from '../../contants/styles';
+import {
+  COLOR_PRIMARY,
+  COLOR_WHITE,
+  FONT_HUGE,
+  FONT_BIG,
+  SMALL_SPACING,
+  XXS_SPACING,
+  FONT_DEFAULT
+} from '../../contants/styles';
 import avatar from '../../assets/avatar.png';
+import { TopSpacer } from '../../components/styled/common';
 
 const StyledRow = styled(Row)`
   justify-content: space-between;
 `;
 
 const Name = styled.h1`
-  font-size: 60px;
+  font-size: ${FONT_HUGE};
   font-weight: 700;
-  margin-bottom: 50px;
+  margin-bottom: ${SMALL_SPACING};
 `;
 
 const Heading = styled.h2`
-  font-size: 36px;
+  font-size: ${FONT_BIG};
   font-weight: 700;
-  margin: 20px 0;
+  margin-bottom: ${XXS_SPACING};
 `;
 
 const Text = styled.p`
-  font-size: 24px;
+  font-size: ${FONT_DEFAULT};
 `;
 
 const Tag = styled.div`
   display: inline-block;
   background-color: ${COLOR_PRIMARY};
   color: ${COLOR_WHITE};
-  padding: 10px 18px;
+  padding: ${XXS_SPACING} ${SMALL_SPACING};
   font-weight: 700;
   border-radius: 10px;
-  margin-right: 10px;
+  margin-right: ${XXS_SPACING};
+  margin-bottom: ${XXS_SPACING};
 `;
 
 const Member = styled.span`
-  font-size: 20px;
-  margin-left: 30px;
+  font-size: ${FONT_DEFAULT};
+  margin-left: ${SMALL_SPACING};
 `;
 
-const Date = styled.span`
-  font-size: 24px;
-  padding-left: 15px;
+const Date = styled.p`
+  font-size: ${FONT_BIG};
+  margin-bottom: ${SMALL_SPACING};
 `;
 
 function FullTask(props) {
@@ -84,7 +94,7 @@ function FullTask(props) {
 
   return (
     <Layout>
-      <Container>
+      <TopSpacer>
         <Name>{task.name}</Name>
         <StyledRow>
           <Col md="6">
@@ -121,7 +131,7 @@ function FullTask(props) {
             />
           </Col>
         </StyledRow>
-      </Container>
+      </TopSpacer>
     </Layout>
   );
 }
