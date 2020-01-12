@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { Container } from 'react-bootstrap';
 
 import {
   CONNECTED,
@@ -14,6 +13,7 @@ import {
 import Layout from '../../components/Layout';
 import { Message, FormInput } from '../../components/dashboard/chat';
 import { FullSpinner } from '../../components/spinners';
+import { TopSpacer } from '../../components/styled/common';
 
 function ChatPage({ match }) {
   const [messages, setMessages] = useState([]);
@@ -64,7 +64,7 @@ function ChatPage({ match }) {
 
   return (
     <Layout>
-      <Container>
+      <TopSpacer>
         <div>
           {messages.map(message => (
             <Message
@@ -75,7 +75,7 @@ function ChatPage({ match }) {
           ))}
         </div>
         <FormInput handleSubmit={handleSubmit} />
-      </Container>
+      </TopSpacer>
     </Layout>
   );
 }

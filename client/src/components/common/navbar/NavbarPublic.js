@@ -4,7 +4,11 @@ import { Container } from 'react-bootstrap';
 
 import { H1 } from '../../styled/headings';
 import { Link } from '../../styled/links';
-import { COLOR_WHITE, COLOR_PRIMARY } from '../../../contants/styles';
+import {
+  COLOR_WHITE,
+  COLOR_PRIMARY,
+  MEDIUM_SPACING
+} from '../../../contants/styles';
 
 const Wrapper = styled.div`
   position: relative;
@@ -16,7 +20,7 @@ const Inner = styled.div`
   align-items: center;
   justify-content: space-between;
   height: 92px;
-  padding: 25px 0;
+  padding: ${MEDIUM_SPACING} 0;
   border-bottom: ${({ isHomePage }) =>
     !isHomePage && `2px solid ${COLOR_PRIMARY}`};
 

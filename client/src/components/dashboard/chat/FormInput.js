@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-import { COLOR_LIGHT } from '../../../contants/styles';
+import {
+  COLOR_LIGHT,
+  XXS_SPACING,
+  MEDIUM_SPACING,
+  BIG_SPACING,
+  sm,
+  SMALL_SPACING
+} from '../../../contants/styles';
 import attachment from '../../../assets/attachment.svg';
 import photo from '../../../assets/photo.svg';
 import emoji from '../../../assets/emoji.svg';
@@ -14,17 +21,21 @@ const StyledInput = styled.input`
   background: ${COLOR_LIGHT};
   border: unset;
   width: 100%;
-  padding: 10px 24px;
+  padding: ${XXS_SPACING} ${MEDIUM_SPACING};
   border-radius: 30px;
+  margin: ${SMALL_SPACING} 0;
 `;
 
 const Wrapper = styled.div`
-  display: flex;
-  align-items: center;
+  @media ${sm} {
+    display: flex;
+    align-items: center;
+  }
 `;
 
 const Icon = styled.img`
-  margin-right: 32px;
+  width: 32px;
+  margin-right: ${BIG_SPACING};
   cursor: pointer;
 `;
 
@@ -40,9 +51,9 @@ function FormInput({ handleSubmit }) {
   return (
     <StyledForm onSubmit={onSubmit}>
       <Wrapper>
-        <Icon src={emoji} alt="emotki" />
-        <Icon src={attachment} alt="emotki" />
-        <Icon src={photo} alt="emotki" />
+        <Icon src={emoji} alt="emoji" />
+        <Icon src={attachment} alt="attachments" />
+        <Icon src={photo} alt="upload photo" />
         <StyledInput
           placeholder="Type your message..."
           type="text"
