@@ -1,5 +1,6 @@
 import React from 'react';
 import RModal from 'react-modal';
+import styled from 'styled-components';
 
 const defaultStyles = {
   content: {
@@ -8,14 +9,13 @@ const defaultStyles = {
     right: 'auto',
     bottom: 'auto',
     marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-    width: '50vw',
-    height: '50vh',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center'
+    transform: 'translate(-50%, -50%)'
   }
 };
+
+const Content = styled.div`
+  padding: 20px 0;
+`;
 
 function Modal({ isOpen, handleClose, children }) {
   return (
@@ -27,7 +27,7 @@ function Modal({ isOpen, handleClose, children }) {
       style={defaultStyles}
       ariaHideApp={false}
     >
-      {children}
+      <Content>{children}</Content>
     </RModal>
   );
 }

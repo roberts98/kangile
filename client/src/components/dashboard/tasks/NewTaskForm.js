@@ -77,7 +77,9 @@ function NewTaskForm({ boardId, handleModalClose }) {
         <InputGroup>
           <Datepicker value={deadline} handleChange={setDeadline} />
         </InputGroup>
-        <Button type="submit">Create!</Button>
+        <Button wide type="submit">
+          Create!
+        </Button>
       </form>
     </div>
   );
