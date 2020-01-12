@@ -11,7 +11,8 @@ import {
   FONT_DEFAULT,
   FONT_BIG,
   SMALL_SPACING,
-  MEDIUM_SPACING
+  MEDIUM_SPACING,
+  XXS_SPACING
 } from '../../../contants/styles';
 import { NewTaskForm, DraggableTask } from '../tasks';
 import plus from '../../../assets/blue_plus.svg';
@@ -21,7 +22,6 @@ const StyledDiv = styled.div`
   opacity: ${props => (props.isDragging ? 0 : 1)};
   cursor: move;
   border-radius: 15px;
-  padding: ${SMALL_SPACING};
 `;
 
 const Column = styled(Col)`
@@ -32,8 +32,9 @@ const Name = styled.h2`
   font-size: ${FONT_BIG};
   font-weight: 700;
   color: ${COLOR_DARK};
-  margin-bottom: ${MEDIUM_SPACING};
   text-align: center;
+  padding: ${SMALL_SPACING};
+  padding-bottom: 0;
 `;
 
 const StyledLink = styled.p`
@@ -43,7 +44,9 @@ const StyledLink = styled.p`
   cursor: pointer;
   display: flex;
   align-items: center;
-  margin-top: ${SMALL_SPACING};
+  margin: 0;
+  padding: ${SMALL_SPACING};
+  padding-top: ${XXS_SPACING};
 
   &::before {
     content: '';
@@ -58,7 +61,12 @@ const StyledLink = styled.p`
   }
 `;
 
-function Board({ board, index, id }) {
+const BoardWrapper = styled.div`
+  background: ${({ isDragging }) => isDragging && COLOR_PRIMARY};
+  padding: ${SMALL_SPACING};
+`;
+
+function Board({ board, id }) {
   const [isAddingNewTask, setIsAddingNewTask] = useState(false);
 
   function handleClick() {
@@ -74,8 +82,12 @@ function Board({ board, index, id }) {
       <StyledDiv className="box">
         <Name>{board.name}</Name>
         <Droppable droppableId={id}>
-          {provided => (
-            <div ref={provided.innerRef} {...provided.droppableProps}>
+          {(provided, snapshot) => (
+            <BoardWrapper
+              isDragging={snapshot.isDraggingOver}
+              ref={provided.innerRef}
+              {...provided.droppableProps}
+            >
               {board.tasks.map((task, i) => (
                 <DraggableTask
                   boardId={id}
@@ -85,7 +97,7 @@ function Board({ board, index, id }) {
                 />
               ))}
               {provided.placeholder}
-            </div>
+            </BoardWrapper>
           )}
         </Droppable>
         <StyledLink onClick={handleClick}>Add task</StyledLink>

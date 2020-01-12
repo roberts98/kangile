@@ -9,13 +9,15 @@ import {
   FONT_MEDIUM,
   BIG_SPACING,
   XS_SPACING,
-  SMALL_SPACING
+  SMALL_SPACING,
+  COLOR_SUPER_LIGHT
 } from '../../../contants/styles';
 import { Link } from '../../styled/links';
 import times from '../../../assets/times.svg';
 
 const Wrapper = styled.div`
-  background-color: ${COLOR_WHITE};
+  background-color: ${({ isDragging }) =>
+    isDragging ? COLOR_SUPER_LIGHT : COLOR_WHITE};
   border-radius: 10px;
   padding: ${SMALL_SPACING} ${BIG_SPACING} ${SMALL_SPACING} ${XS_SPACING};
   position: relative;
@@ -38,7 +40,7 @@ const Name = styled.h3`
   font-size: ${FONT_MEDIUM};
 `;
 
-function Task({ task, boardId, index }) {
+function Task({ task, boardId, index, isDragging }) {
   const dispatch = useDispatch();
 
   function handleRemoveClick() {
@@ -47,11 +49,12 @@ function Task({ task, boardId, index }) {
 
   return (
     <Draggable draggableId={task._id} index={index}>
-      {provided => (
+      {(provided, snapshot) => (
         <Wrapper
           {...provided.dragHandleProps}
           {...provided.draggableProps}
           ref={provided.innerRef}
+          isDragging={snapshot.isDragging}
         >
           <Link to={`/user/teams/${boardId}/${task._id}`}>
             <Name>{task.name}</Name>
