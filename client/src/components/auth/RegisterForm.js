@@ -17,16 +17,16 @@ function RegisterForm() {
   const dispatch = useDispatch();
   const { error, isLoading } = useSelector(state => state.auth);
 
-  function handleUsernameChange(value) {
-    setUsername(value);
+  function handleUsernameChange(e) {
+    setUsername(e.target.value);
   }
 
-  function handleEmailChange(value) {
-    setEmail(value);
+  function handleEmailChange(e) {
+    setEmail(e.target.value);
   }
 
-  function handlePasswordChange(value) {
-    setPassword(value);
+  function handlePasswordChange(e) {
+    setPassword(e.target.value);
   }
 
   function handleFormSubmit(e) {
